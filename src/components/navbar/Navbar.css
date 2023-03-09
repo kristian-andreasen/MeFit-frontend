@@ -1,0 +1,44 @@
+header {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav {
+  display: flex;
+  list-style: none;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+header nav ul {
+  align-items: center;
+  display: flex;
+}
+
+header nav ul li {
+  padding: 0 16px;
+}
+
+#mefit-logo {
+  margin: 0 214px 0 120px;
+  cursor: pointer;
+}
+
+header button {
+  height: 40px;
+  padding: 0.8rem 2rem 0.8rem 2.1rem;
+  box-shadow: 3px 3px 0 0 #000;
+  background-color: #fff;
+  cursor: pointer;
+}
