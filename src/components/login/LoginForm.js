@@ -1,3 +1,4 @@
+import keycloak from '../../keycloak';
 import './LoginForm.css';
 
 function LoginForm() {
@@ -13,10 +14,11 @@ function LoginForm() {
           <div class="row">
             <label class="title">Password</label>
             <input type="password" id="login" />
+            
           </div>
         </div>
         <div class="btn-wrapper">
-          <button id="login-btn">LOG IN</button>
+          <button id="login-btn" onClick={()=>keycloak.login()}>LOG IN</button>
         </div>
       </form>
       <div class="btn-wrapper">
