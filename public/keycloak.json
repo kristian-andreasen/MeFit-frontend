@@ -1,6 +1,6 @@
 {
-  "realm": "react-auth",
-  "auth-server-url": "http://localhost:8083/auth/",
+  "realm": "me-fit-keycloak",
+  "auth-server-url": "https://lemur-3.cloud-iam.com/auth/",
   "ssl-required": "external",
   "resource": "keycloak-react-auth",
   "public-client": true,
