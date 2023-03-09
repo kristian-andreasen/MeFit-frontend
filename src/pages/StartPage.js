@@ -1,4 +1,5 @@
 import keycloak from "../keycloak";
+import Navbar from "../components/navbar/Navbar";
 
 /**
  * Example Start Page using Keycloak Context.
@@ -6,6 +7,7 @@ import keycloak from "../keycloak";
 function StartPage() {
   return (
     <div>
+      <Navbar/>
       <h1>Start Page</h1>
 
       <section className="actions">
