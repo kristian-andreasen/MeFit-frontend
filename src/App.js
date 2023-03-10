@@ -7,6 +7,7 @@ import {
 import KeycloakRoute from './routes/KeycloakRoute';
 import { ROLES } from './const/roles';
 import StartPage from './pages/StartPage';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           <Routes>
             
             <Route path="/" element={<StartPage/>} />
-            <Route path="/profile" element={<p>profile</p>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path='/login' element={
               <KeycloakRoute role={ROLES.User}>
                   {<p>successfully assigned role</p>}
