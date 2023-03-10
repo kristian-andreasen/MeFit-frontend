@@ -25,7 +25,7 @@ function ProfileHeader() {
           {keycloak.token && (
             <div>
               {/*getting the name of sign-in user */}
-              <h1>Hi,{keycloak.tokenParsed.name}</h1>
+              <h1>Hi, {keycloak.tokenParsed.name}</h1>
             </div>
           )}
         </div>
