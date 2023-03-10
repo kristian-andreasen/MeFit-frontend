@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import keycloak from '../../keycloak';
+import keycloak, { loginWithRedirect, logoutWithRedirect } from '../../keycloak';
 import './Navbar.css';
 
 function Navbar() {
@@ -28,14 +28,11 @@ function Navbar() {
         <ul>
           <li>
           {!keycloak.authenticated && (
-          <button onClick={() => keycloak.login()}>Login</button>
+          <button onClick={() => loginWithRedirect()}>Login</button>
         )}
         {keycloak.authenticated && (
-          <button onClick={() => keycloak.logout()}>Logout</button>
+          <button onClick={() => logoutWithRedirect()}>Logout</button>
         )}
-          </li>
-          <li>
-            <button>DOWNLOAD</button>
           </li>
         </ul>
       </nav>

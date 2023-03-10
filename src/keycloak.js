@@ -13,10 +13,24 @@ export const initialize = () => {
     checkLoginIframe: false,
     onLoad: "check-sso",
     silentCheckSsoRedirectUri:
-      window.location.origin + "/silent-check-sso.html",
+    window.location.origin + "/silent-check-sso.html",
   };
-  return keycloak.init(config);
+  return keycloak.init(config)
 };
+
+/* Set redirectUri to "/profile" and then login
+*/
+export const loginWithRedirect = () => {
+  keycloak.redirectUri= window.location.origin + "/profile";
+  keycloak.login()
+}
+/* Set redirectUri to "/" and then logout
+*/
+export const logoutWithRedirect = () => {
+  keycloak.redirectUri= window.location.origin + "/";
+  keycloak.logout();
+}
+
 
 /** @type { Keycloak } keycloak */
 export default keycloak;
