@@ -5,17 +5,17 @@ function MenuItems() {
   return (
     <ul className='menu-list main-menu left-menu'>
       <li>
-        <NavLink to='/' className='menu-link'>
+        <NavLink to='/' className='menu-link button-animation'>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to='/about' className='menu-link'>
+        <NavLink to='/about' className='menu-link button-animation'>
           About
         </NavLink>
       </li>
       <li>
-        <NavLink to='/faq' className='menu-link'>
+        <NavLink to='/faq' className='menu-link button-animation'>
           FAQ
         </NavLink>
       </li>

@@ -3,7 +3,7 @@
   right: 0;
 }
 
-.login-button {
+.button-animation {
   background: none !important;
   border: none;
   padding: 0 !important;
@@ -19,7 +19,7 @@
   transition: all 0.3s ease;
 }
 
-.login-button::before {
+.button-animation::before {
   content: '';
   position: absolute;
   left: 0;
@@ -30,7 +30,7 @@
   transition: width 0.25s ease-out;
 }
 
-.login-button:hover::before {
+.button-animation:hover::before {
   width: 100%;
 }
 

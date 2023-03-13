@@ -14,24 +14,24 @@ function AuthMenu() {
         <>
           <ul className='menu-list main-menu right-menu'>
             <li>
-              <NavLink to='/profile' className='menu-link'>Profile</NavLink>
+              <NavLink to='/dashboard' className='menu-link button-animation'>
+                Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/profile' className='menu-link button-animation'>
+                Profile
+              </NavLink>
             </li>
             <li>
               <button
-                className='login-button'
+                className='sign-up-button'
                 onClick={() => logoutWithRedirect()}
               >
                 Logout
               </button>
             </li>
           </ul>
-
-          <div className='profile-greeting'>
-            <div>
-              {/*getting the name of sign-in user */}
-              <h1>Hi, {keycloak.tokenParsed.name}</h1>
-            </div>
-          </div>
         </>
       )}
 
@@ -39,7 +39,7 @@ function AuthMenu() {
         <ul className='menu-list main-menu right-menu'>
           <li>
             <button
-              className='login-button'
+              className='login-button button-animation'
               onClick={() => loginWithRedirect()}
             >
               Login
