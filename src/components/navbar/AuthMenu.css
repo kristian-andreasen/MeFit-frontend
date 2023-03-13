@@ -3,20 +3,6 @@
   right: 0;
 }
 
-.menu-list {
-  list-style: none;
-  list-style-type: none;
-}
-
-.main-menu {
-  align-items: center;
-  display: flex;
-}
-
-.main-menu li {
-  padding: 0 16px;
-}
-
 .login-button {
   background: none !important;
   border: none;
