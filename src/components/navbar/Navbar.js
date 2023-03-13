@@ -1,38 +1,38 @@
 import { NavLink } from 'react-router-dom';
-import keycloak, { loginWithRedirect, logoutWithRedirect } from '../../keycloak';
+import keycloak, {
+  loginWithRedirect,
+  logoutWithRedirect,
+  registerWithRedirect,
+} from '../../keycloak';
+import MenuItems from './MenuItems';
 import './Navbar.css';
 
 function Navbar() {
   return (
-    <header>
-      <nav>
-        <ul>
+    <header className='header-container'>
+      <nav className='main-navigation'>
+        <MenuItems />
+        <h1 className='header-heading'>MeFit</h1>
+        <ul className='menu-list main-menu right-menu'>
           <li>
-            <a>about</a>
+            {!keycloak.authenticated && (
+              <button
+                className='login-button'
+                onClick={() => loginWithRedirect()}
+              >
+                Login
+              </button>
+            )}
           </li>
           <li>
-            <a>coach</a>
-          </li>
-          <li>
-            <a>blog</a>
-          </li>
-          <li>
-            <a>community</a>
-          </li>
-        </ul>
-        <div id='mefit-logo'>
-          <h1>
-          <NavLink to='/'>MeFit</NavLink>
-          </h1>
-        </div>
-        <ul>
-          <li>
-          {!keycloak.authenticated && (
-          <button onClick={() => loginWithRedirect()}>Login</button>
-        )}
-        {keycloak.authenticated && (
-          <button onClick={() => logoutWithRedirect()}>Logout</button>
-        )}
+            {!keycloak.authenticated && (
+              <button
+                className='sign-up-button'
+                onClick={() => registerWithRedirect()}
+              >
+                SIGN UP
+              </button>
+            )}
           </li>
         </ul>
       </nav>

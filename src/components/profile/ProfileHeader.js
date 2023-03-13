@@ -1,27 +1,39 @@
-import keycloak, {loginWithRedirect, logoutWithRedirect,} from '../../keycloak';
-
-import './ProfileHeader.css';
+import keycloak, {
+  loginWithRedirect,
+  logoutWithRedirect,
+} from '../../keycloak';
 import { NavLink } from 'react-router-dom';
+
+//custom components
+import MenuItems from '../navbar/MenuItems';
+
+//css
+import './ProfileHeader.css';
 
 function ProfileHeader() {
   return (
-    <header class='banner'>
-      <div class='after'>
-        <div id='header'>
-          <nav>
-            <div></div>
-            <a>
-              <NavLink to='/'>MeFit</NavLink>
-            </a>
-
-            <p>
+    <>
+      <header className='header-container'>
+        <nav className='main-navigation'>
+          <MenuItems />
+          <h1 className='header-heading'>MeFit</h1>
+          <ul className='menu-list main-menu right-menu'>
+            <li>
+              <a href='#'>Settings</a>
+            </li>
+            <li>
               {keycloak.authenticated && (
-                <button onClick={() => logoutWithRedirect()}>Logout</button>
+                <button
+                  className='login-button'
+                  onClick={() => logoutWithRedirect()}
+                >
+                  Logout
+                </button>
               )}
-            </p>
-          </nav>
-        </div>
-        <div class='greeting'>
+            </li>
+          </ul>
+        </nav>
+        <div className='profile-greeting'>
           {keycloak.token && (
             <div>
               {/*getting the name of sign-in user */}
@@ -29,8 +41,8 @@ function ProfileHeader() {
             </div>
           )}
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
 

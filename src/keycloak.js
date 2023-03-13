@@ -31,6 +31,12 @@ export const logoutWithRedirect = () => {
   keycloak.logout();
 }
 
+export const registerWithRedirect = () => {
+  keycloak.redirectUri= window.location.origin + "/profile";
+  keycloak.register()
+}
+
+
 
 /** @type { Keycloak } keycloak */
 export default keycloak;

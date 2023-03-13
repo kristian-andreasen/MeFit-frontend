@@ -1,0 +1,29 @@
+.left-menu {
+  position: absolute;
+  left: 0;
+}
+
+.menu-list {
+  list-style: none;
+  list-style-type: none;
+}
+
+.main-menu {
+  align-items: center;
+  display: flex;
+}
+
+.main-menu li {
+  padding: 0 16px;
+}
+
+.menu-link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 2px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
