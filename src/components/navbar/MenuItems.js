@@ -1,22 +1,23 @@
+import { NavLink } from 'react-router-dom';
 import './MenuItems.css';
 
 function MenuItems() {
   return (
     <ul className='menu-list main-menu left-menu'>
       <li>
-        <a href='#' className='menu-link'>
+        <NavLink to='/' className='menu-link'>
           Home
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href='#' className='menu-link'>
+        <NavLink to='/about' className='menu-link'>
           About
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href='#' className='menu-link'>
+        <NavLink to='/faq' className='menu-link'>
           FAQ
-        </a>
+        </NavLink>
       </li>
     </ul>
   );
