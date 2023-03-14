@@ -11,8 +11,7 @@ function ProfileHeader() {
       <Navbar />
       <div className='profile-greeting'>
         <div>
-          {/*getting the name of sign-in user */}
-          <h1 className=''>Hi, {keycloak.tokenParsed.name}</h1>
+          <h1>Hi, {keycloak.tokenParsed.name}</h1>
         </div>
       </div>
     </>

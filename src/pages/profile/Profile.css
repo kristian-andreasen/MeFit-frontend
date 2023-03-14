@@ -1,4 +1,9 @@
-.profile-container {
+/*.profile-container {
   background-color: #fff;
   height: 100vh;
+}*/
+
+.progress {
+  display: flex;
+  justify-content: center;
 }

@@ -8,7 +8,7 @@ import Loading from './components/loading/Loading';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Loading message="Connecting"/>);
+root.render(<Loading />);
 
 initialize()
   .then(() => { // If No Keycloak Error occurred - Display the App

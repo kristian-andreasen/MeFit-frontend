@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Workouts from './pages/Workouts';
 import Programs from './pages/Programs';
 import Goals from './pages/Goals';
+import Loading from './components/loading/Loading';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/goals' element={<Goals />} />
           <Route path='/programs' element={<Programs />} />
           <Route path='/workouts' element={<Workouts />} />
+          <Route path='/loading' element={<Loading />}/>
           <Route
             path='/login'
             element={
