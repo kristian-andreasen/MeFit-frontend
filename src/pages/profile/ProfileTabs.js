@@ -4,25 +4,40 @@ import { NavLink } from 'react-router-dom';
 import './ProfileTabs.css';
 
 function ProfileTabs() {
-  const [activeTab, setActiveTab] = useState('pro-plans');
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
   return (
     <nav className='tabs-container'>
       <ul className='tabs-list'>
         <li className='dashboard-tab'>
-          <NavLink to='/dashboard'>Dashboard</NavLink>
+          <NavLink
+            to='/dashboard'
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+          >
+            Dashboard
+          </NavLink>
         </li>
         <li className='goals-tab'>
-          <NavLink to='/goals'>Goals</NavLink>
+          <NavLink
+            to='/goals'
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+          >
+            Goals
+          </NavLink>
         </li>
         <li className='programs-tab'>
-          <NavLink to='/programs'>Programs</NavLink>
+          <NavLink
+            to='/programs'
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+          >
+            Programs
+          </NavLink>
         </li>
         <li className='workouts-tab'>
-          <NavLink to='/workouts'>Workouts</NavLink>
+          <NavLink
+            to='/workouts'
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+          >
+            Workouts
+          </NavLink>
         </li>
       </ul>
     </nav>
