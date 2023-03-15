@@ -8,12 +8,14 @@ function ProfileTabs() {
     <nav className='tabs-container'>
       <ul className='tabs-list'>
         <li className='dashboard-tab'>
-          <NavLink
-            to='/dashboard'
-            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-          >
-            Dashboard
-          </NavLink>
+          <p>
+            <NavLink
+              to='/dashboard'
+              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+            >
+              Dashboard
+            </NavLink>
+          </p>
         </li>
         <li className='goals-tab'>
           <NavLink
