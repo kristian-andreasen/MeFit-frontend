@@ -13,6 +13,7 @@ import Goals from './pages/Goals';
 import Loading from './components/loading/Loading';
 import VideoBackground from './components/VideoBackground';
 import Program from './components/programs/Program';
+import Workout from './components/workouts/Workout';
 
 function App() {
   return (
@@ -26,10 +27,12 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/goals' element={<Goals />} />
           <Route path='/programs' element={<Programs />} />
+          <Route path='program' element={<Program />} />
           <Route path='/workouts' element={<Workouts />} />
+          <Route path='/workout' element={<Workout />} />
           <Route path='/loading' element={<Loading />} />
           <Route path='/video' element={<VideoBackground />} />
-          <Route path='program' element={<Program />} />
+
           <Route
             path='/login'
             element={
