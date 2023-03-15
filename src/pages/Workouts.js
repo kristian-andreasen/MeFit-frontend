@@ -1,11 +1,10 @@
-import Navbar from '../components/navbar/Navbar';
+import ProfileHeader from './profile/ProfileHeader';
 import ProfileTabs from './profile/ProfileTabs';
 
 function Workouts() {
   return (
     <>
-      <Navbar />
-      <p>Workouts</p>
+      <ProfileHeader/>
       <ProfileTabs />
     </>
   );
