@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Megrim&display=swap');
+
 .header-container {
   display: flex;
   justify-content: center;
@@ -28,4 +30,9 @@
 
 .main-menu li {
   padding: 0 16px;
+}
+
+#logo {
+  font-family: 'Karla', sans-serif;
+  font-family: 'Megrim', cursive;
 }

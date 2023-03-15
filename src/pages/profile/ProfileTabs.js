@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './ProfileTabs.css';
@@ -8,12 +7,14 @@ function ProfileTabs() {
     <nav className='tabs-container'>
       <ul className='tabs-list'>
         <li className='dashboard-tab'>
-          <NavLink
-            to='/dashboard'
-            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-          >
-            Dashboard
-          </NavLink>
+          <p>
+            <NavLink
+              to='/profile'
+              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+            >
+              Dashboard
+            </NavLink>
+          </p>
         </li>
         <li className='goals-tab'>
           <NavLink

@@ -1,0 +1,8 @@
+.main-content-area {
+  padding: 64px 0 120px;
+}
+
+.programs-section {
+  display: flex;
+  justify-content: center;
+}
