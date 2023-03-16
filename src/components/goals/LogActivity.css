@@ -1,0 +1,20 @@
+.log-activity-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-activity-title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.log-activity-button {
+  cursor: pointer;
+  background: rgb(0, 0, 0);
+  height: 56px;
+  text-align: center;
+  border-radius: 60px;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+}
