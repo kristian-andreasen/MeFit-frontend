@@ -1,5 +1,5 @@
-import ProfileHeader from '../../pages/profile/ProfileHeader';
-import ProfileTabs from '../../pages/profile/ProfileTabs';
+import ProfileHeader from '../profile/ProfileHeader';
+import ProfileTabs from '../profile/ProfileTabs';
 
 import './Program.css';
 

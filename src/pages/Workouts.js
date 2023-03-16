@@ -1,6 +1,6 @@
-import WorkoutsList from '../components/workouts/WorkoutsList';
-import ProfileHeader from './profile/ProfileHeader';
-import ProfileTabs from './profile/ProfileTabs';
+import WorkoutsList from '../components/workout/WorkoutsList';
+import ProfileHeader from '../components/profile/ProfileHeader';
+import ProfileTabs from '../components/profile/ProfileTabs';
 
 import './Workouts.css'
 

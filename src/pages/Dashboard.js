@@ -1,5 +1,5 @@
 import Navbar from '../components/navbar/Navbar';
-import ProfileTabs from './profile/ProfileTabs';
+import ProfileTabs from '../components/profile/ProfileTabs';
 
 function Dashboard() {
   return (

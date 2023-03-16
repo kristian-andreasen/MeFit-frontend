@@ -1,8 +1,7 @@
-import ProfileHeader from './profile/ProfileHeader';
-import ProfileTabs from './profile/ProfileTabs';
+import ProfileHeader from '../components/profile/ProfileHeader';
+import ProfileTabs from '../components/profile/ProfileTabs';
 
 import './Goals.css';
-import { format, startOfWeek, endOfWeek } from 'date-fns';
 import { useState } from 'react';
 import GoalFormModal from '../components/goals/GoalFormModal';
 import ActiveGoalsList from '../components/goals/ActiveGoalsList';

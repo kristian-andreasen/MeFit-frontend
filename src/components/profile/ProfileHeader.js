@@ -1,6 +1,6 @@
 import keycloak from '../../keycloak';
 import './ProfileHeader.css';
-import Navbar from '../../components/navbar/Navbar';
+import Navbar from '../navbar/Navbar';
 
 function ProfileHeader() {
   return (

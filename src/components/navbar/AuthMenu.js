@@ -1,18 +1,38 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import keycloak, {
   loginWithRedirect,
   logoutWithRedirect,
   registerWithRedirect,
 } from '../../keycloak';
+import { ROLES } from '../../const/roles';
 
 import './AuthMenu.css';
 
 function AuthMenu() {
+  
+
+
   return (
     <>
       {keycloak.authenticated && (
         <>
           <ul className='menu-list main-menu right-menu'>
+            
+          {keycloak.hasRealmRole(ROLES.Contributor) && (
+              <li>
+                <NavLink to='/contributor' className='menu-link button-animation'>
+                  Contribute
+                </NavLink>
+              </li>
+            )           
+            }
+
+
+          
+
+
+
             <li>
               <NavLink to='/dashboard' className='menu-link button-animation'>
                 Dashboard
