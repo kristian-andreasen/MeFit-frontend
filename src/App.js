@@ -21,26 +21,23 @@ function App() {
       <div className='App'>
         <Routes>
           <Route path='/' element={<StartPage />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/about' element={<About />} />
           <Route path='/faq' element={<FAQ />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/goals' element={<Goals />} />
-          <Route path='/programs' element={<Programs />} />
-          <Route path='program' element={<Program />} />
-          <Route path='/workouts' element={<Workouts />} />
-          <Route path='/workout' element={<Workout />} />
+
+
+          <Route path='/profile' element={<KeycloakRoute role={ROLES.User}><Profile /></KeycloakRoute>} />
+          <Route path='/dashboard' element={<KeycloakRoute role={ROLES.User}><Dashboard /></KeycloakRoute>} />
+          <Route path='/goals' element={<KeycloakRoute role={ROLES.User}><Goals /></KeycloakRoute>} />
+          <Route path='/programs' element={<KeycloakRoute role={ROLES.User}><Programs /></KeycloakRoute>} />
+          <Route path='program' element={<KeycloakRoute role={ROLES.User}><Program /></KeycloakRoute>} />
+          <Route path='/workouts' element={<KeycloakRoute role={ROLES.User}><Workouts /></KeycloakRoute>} />
+          <Route path='/workout' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
+
+
+
+          
           <Route path='/loading' element={<Loading />} />
           <Route path='/video' element={<VideoBackground />} />
-
-          <Route
-            path='/login'
-            element={
-              <KeycloakRoute role={ROLES.User}>
-                {<p>successfully assigned role</p>}
-              </KeycloakRoute>
-            }
-          />
         </Routes>
       </div>
     </BrowserRouter>

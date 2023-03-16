@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import AuthMenu from './AuthMenu';
 import MenuItems from './MenuItems';
 import './Navbar.css';
@@ -7,9 +8,11 @@ function Navbar() {
     <header className='header-container'>
       <nav className='main-navigation'>
         <MenuItems />
-        <h1 id='logo' className='header-heading'>
+        <NavLink to="/">
+          <h1 id='logo' className='header-heading'>
           MeFit
-        </h1>
+        </h1></NavLink>
+
         <AuthMenu />
       </nav>
     </header>
