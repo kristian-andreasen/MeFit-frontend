@@ -1,9 +1,9 @@
-import CalendarPlan from '../../components/CalendarPlan';
-import ProfileHeader from './ProfileHeader';
-import ProfileTabs from './ProfileTabs';
+import CalendarPlan from '../components/calendarPlan/CalendarPlan';
+import ProfileHeader from '../components/profile/ProfileHeader';
+import ProfileTabs from '../components/profile/ProfileTabs';
 
 import './Profile.css';
-import ProgressBar from '../../components/ProgressBar';
+import ProgressBar from '../components/progressBar/ProgressBar';
 
 function Profile() {
   return (

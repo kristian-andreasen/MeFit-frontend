@@ -1,9 +1,8 @@
-import LoginForm from './components/login/LoginForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import KeycloakRoute from './routes/KeycloakRoute';
 import { ROLES } from './const/roles';
 import StartPage from './pages/StartPage';
-import Profile from './pages/profile/Profile';
+import Profile from './pages/Profile';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
 import Dashboard from './pages/Dashboard';
@@ -11,9 +10,10 @@ import Workouts from './pages/Workouts';
 import Programs from './pages/Programs';
 import Goals from './pages/Goals';
 import Loading from './components/loading/Loading';
-import VideoBackground from './components/VideoBackground';
+import VideoBackground from './components/videoBackground/VideoBackground';
 import Program from './components/programs/Program';
-import Workout from './components/workouts/Workout';
+import Workout from './components/workout/Workout';
+import Contributor from './pages/contributor';
 
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
           <Route path='program' element={<KeycloakRoute role={ROLES.User}><Program /></KeycloakRoute>} />
           <Route path='/workouts' element={<KeycloakRoute role={ROLES.User}><Workouts /></KeycloakRoute>} />
           <Route path='/workout' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
+          <Route path='/contributor' element={<KeycloakRoute role={ROLES.Contributor}><Contributor /></KeycloakRoute>} />
 
 
 

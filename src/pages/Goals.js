@@ -1,5 +1,5 @@
-import ProfileHeader from './profile/ProfileHeader';
-import ProfileTabs from './profile/ProfileTabs';
+import ProfileHeader from '../components/profile/ProfileHeader';
+import ProfileTabs from '../components/profile/ProfileTabs';
 
 function Goals() {
   return (
