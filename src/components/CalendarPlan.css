@@ -19,7 +19,7 @@
   line-height: 1.125em;
   border: 0;
   overflow: hidden;
-  box-shadow: 0 30px 40px 0 rgba(16, 36, 94, .2);
+  box-shadow: 0 30px 40px 0 rgba(16, 36, 94, 0.2);
 }
 
 .react-calendar--doubleView {

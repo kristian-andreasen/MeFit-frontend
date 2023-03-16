@@ -1,0 +1,18 @@
+.active-goals-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-goals-title {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.active-goals-item {
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 14px 10px;
+  margin: 16px 0px 0px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 0px 2px 0px;
+}
