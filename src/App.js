@@ -29,7 +29,7 @@ function App() {
           <Route path='/dashboard' element={<KeycloakRoute role={ROLES.User}><Dashboard /></KeycloakRoute>} />
           <Route path='/goals' element={<KeycloakRoute role={ROLES.User}><Goals /></KeycloakRoute>} />
           <Route path='/programs' element={<KeycloakRoute role={ROLES.User}><Programs /></KeycloakRoute>} />
-          <Route path='program' element={<KeycloakRoute role={ROLES.User}><Program /></KeycloakRoute>} />
+          <Route exact path='/program/:id' element={<KeycloakRoute role={ROLES.User}><Program /></KeycloakRoute>} />
           <Route path='/workouts' element={<KeycloakRoute role={ROLES.User}><Workouts /></KeycloakRoute>} />
           <Route path='/workout' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
           <Route path='/contributor' element={<KeycloakRoute role={ROLES.Contributor}><Contributor /></KeycloakRoute>} />
