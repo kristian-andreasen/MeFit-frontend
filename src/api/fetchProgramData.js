@@ -1,10 +1,16 @@
+import keycloak from '../keycloak';
+
 const apiURL = 'http://localhost:8080/api/v1/programs';
 
 export const getProgramById = async (id) => {
   try {
     //'programs' should be changed to 'program'
     const response = await fetch(`${apiURL}/${id}`, {
-      mode: 'cors',
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${keycloak.token}`,
+        'Content-Type': 'application/json',
+      },
     });
     if (!response.ok) {
       throw new Error('Could not fetch workout');
@@ -19,8 +25,13 @@ export const getProgramById = async (id) => {
 export const getAllPrograms = async () => {
   try {
     const response = await fetch(apiURL, {
-      mode: 'cors',
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${keycloak.token}`,
+        'Content-Type': 'application/json',
+      },
     });
+
     if (!response.ok) {
       throw new Error('Could not fetch programs');
     }
