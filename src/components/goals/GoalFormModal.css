@@ -45,6 +45,7 @@
 .create-goal-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .submit-button {

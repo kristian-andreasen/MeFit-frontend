@@ -65,11 +65,6 @@ function LogActivityModal({ handleClose, text }) {
       >
         <h2>Log Activity</h2>
         <form onSubmit={handleSubmit} className='create-goal-form'>
-            <select name="goal">
-                <option>--Select Goal--</option>
-                <option>goal 1</option>
-                <option>goal 2</option>
-            </select>
             <GoalSelect />
           <button type='submit' className='submit-button'>
             Log Activity
