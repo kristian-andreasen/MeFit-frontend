@@ -1,10 +1,10 @@
 import keycloak from '../keycloak';
 
-const apiURL = 'http://localhost:8080/api/v1/user/goals';
+import apiURL from '../const/apiUrl';
 
 export const getCurrentGoals = async () => {
   try {
-    const response = await fetch(apiURL, {
+    const response = await fetch(`${apiURL}/goals`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${keycloak.token}`,
