@@ -1,0 +1,30 @@
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.signup-label {
+  margin: 20px 0;
+}
+
+.signup-button {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 24px;
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: transform 0.1s ease-out;
+  margin-top: 50px;
+}
+
+.signup-button:hover {
+  transform: scale(1.1);
+}

@@ -14,6 +14,8 @@ import VideoBackground from './components/videoBackground/VideoBackground';
 import Program from './components/programs/Program';
 import Workout from './components/workout/Workout';
 import Contributor from './pages/contributor';
+import SignUpForm from './pages/SignUpForm';
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           <Route path='/' element={<StartPage />} />
           <Route path='/about' element={<About />} />
           <Route path='/faq' element={<FAQ />} />
+          <Route path='signup' element={<SignUpForm />} />
 
 
           <Route path='/profile' element={<KeycloakRoute role={ROLES.User}><Profile /></KeycloakRoute>} />
