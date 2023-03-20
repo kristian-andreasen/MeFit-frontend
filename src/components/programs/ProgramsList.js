@@ -31,7 +31,7 @@ function ProgramsList() {
               <div className='program-item-overlay'>
                 <h4 className='program-item-title'>{program.name}</h4>
               </div>
-              <img src={program.imageURL} alt={program.name} />
+              <img src={program.imageURL} alt={program.name} className='program-image'/>
               {/* display any other program information that you want */}
             </NavLink>
           </li>

@@ -1,6 +1,6 @@
 import './CompletedGoalsList.css';
 
-function CompletedGoals() {
+function CompletedGoalsList() {
   return (
     <section className='completed-goals-container'>
       <h2 className='completed-goals-title'>Completed Goals</h2>
@@ -13,4 +13,4 @@ function CompletedGoals() {
   );
 }
 
-export default CompletedGoals;
+export default CompletedGoalsList;
