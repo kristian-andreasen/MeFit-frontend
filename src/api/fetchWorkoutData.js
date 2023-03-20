@@ -1,4 +1,4 @@
-const apiURL = 'http://localhost:8080/api/v1';
+import apiURL from "../const/apiUrl";
 
 export const getWorkoutById = async (id) => {
   try {

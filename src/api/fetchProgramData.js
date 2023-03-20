@@ -1,11 +1,11 @@
 import keycloak from '../keycloak';
 
-const apiURL = 'http://localhost:8080/api/v1/programs';
+import apiURL from '../const/apiUrl';
 
 export const getProgramById = async (id) => {
   try {
     //'programs' should be changed to 'program'
-    const response = await fetch(`${apiURL}/${id}`, {
+    const response = await fetch(`${apiURL}/programs/${id}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${keycloak.token}`,
@@ -24,7 +24,7 @@ export const getProgramById = async (id) => {
 
 export const getAllPrograms = async () => {
   try {
-    const response = await fetch(apiURL, {
+    const response = await fetch(`${apiURL}/programs`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${keycloak.token}`,
