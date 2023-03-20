@@ -1,6 +1,6 @@
 import keycloak from '../keycloak';
 
-const apiURL = 'http://localhost:8080/api/v1/user/goals';
+import apiURL from '../const/apiUrl';
 
 export const getGoalById = async (userId) => {
   try {

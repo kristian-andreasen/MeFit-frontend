@@ -6,13 +6,13 @@ function WorkoutsList() {
     <>
       <ul className='workouts-list'>
         <NavLink to='/workout'>
-          <li classname='workout-item'>Lower body focus on hamstrings</li>
+          <li className='workout-item'>Lower body focus on hamstrings</li>
         </NavLink>
         <NavLink to='/workout'>
-          <li classname='workout-item'>Upper body focus vertical</li>
+          <li className='workout-item'>Upper body focus vertical</li>
         </NavLink>
         <NavLink to='/workout'>
-          <li classname='workout-item'>Whole body strength & endurance</li>
+          <li className='workout-item'>Whole body strength & endurance</li>
         </NavLink>
       </ul>
     </>
