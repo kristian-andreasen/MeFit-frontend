@@ -3,4 +3,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
+}
+
+.completed-goals-title {
+  font-size: 44px;
+  margin: 20px 0;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.4);
+}
+
+.completed-goals-list {
+  list-style: none;
+  padding: 0;
+}
+
+.completed-goals-item {
+  background: #A3BE8C;
+  border-radius: 8px;
+  padding: 14px 10px;
+  margin: 16px 0px 0px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 0px 2px 0px;
 }

@@ -1,11 +1,12 @@
+import './LogActivityModal.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import Backdrop from '../Backdrop';
 
 import { useState } from 'react';
-import './GoalFormModal.css';
 import ModalButton from '../ModalButton';
+import GoalSelect from './GoalSelect';
 
-function GoalFormModal({ handleClose, text }) {
+function LogActivityModal({ handleClose, text }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [goalName, setGoalName] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -62,29 +63,22 @@ function GoalFormModal({ handleClose, text }) {
         animate='visible'
         exit='exit'
       >
-        <h2>Create Goal</h2>
+        <h2>Log Activity</h2>
         <form onSubmit={handleSubmit} className='create-goal-form'>
-          <label htmlFor='goalName'>Goal Name</label>
-          <input
-            type='text'
-            id='goalName'
-            value={goalName}
-            onChange={handleGoalNameChange}
-          />
-          <label htmlFor='startDate'>Start Date</label>
-          <input
-            type='date'
-            id='startDate'
-            value={startDate}
-            onChange={handleStartDateChange}
-          />
-          <button type='submit' className='submit-button'>Create Goal</button>
+            <select name="goal">
+                <option>--Select Goal--</option>
+                <option>goal 1</option>
+                <option>goal 2</option>
+            </select>
+            <GoalSelect />
+          <button type='submit' className='submit-button'>
+            Log Activity
+          </button>
         </form>
         <ModalButton onClick={handleClose} label='Close' />
-        
       </motion.div>
     </Backdrop>
   );
 }
 
-export default GoalFormModal;
+export default LogActivityModal;
