@@ -25,7 +25,7 @@ function App() {
           <Route path='/' element={<StartPage />} />
           <Route path='/about' element={<About />} />
           <Route path='/faq' element={<FAQ />} />
-          <Route path='signup' element={<SignUpForm />} />
+          <Route path='signup' element={<KeycloakRoute role={ROLES.User}><SignUpForm /></KeycloakRoute>} />
 
 
           <Route path='/profile' element={<KeycloakRoute role={ROLES.User}><Profile /></KeycloakRoute>} />
