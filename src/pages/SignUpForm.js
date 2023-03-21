@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getJwtInfo, postSignupData, test } from '../api/syncDbWithKeycloak';
+import keycloak from '../keycloak';
 
 import './SignUpForm.css';
 
@@ -7,13 +9,29 @@ function SignUpInfo() {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [jwtAccInfo, setJwtAccInfo] = useState({})
+
+  
+
+
+
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('Name:', name);
-    console.log('Age:', age);
-    console.log('Weight:', weight);
-    console.log('Height:', height);
+    let data = {
+      id: keycloak.tokenParsed.sub,
+      first_name: keycloak.tokenParsed.given_name,
+      email: keycloak.tokenParsed.email,
+      last_name: keycloak.tokenParsed.family_name,
+      role: "user"
+    }
+    postSignupData(data);
+
+    
+
+
+    
+
   }
   return (
     <form onSubmit={handleSubmit} className='signup-form'>
