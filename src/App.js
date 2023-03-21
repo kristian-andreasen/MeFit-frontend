@@ -13,8 +13,10 @@ import Loading from './components/loading/Loading';
 import VideoBackground from './components/videoBackground/VideoBackground';
 import Program from './components/programs/Program';
 import Workout from './components/workout/Workout';
-import Contributor from './pages/contributor';
 import SignUpForm from './pages/SignUpForm';
+import ContributeWorkOut from './pages/ContributeWorkout';
+import ContributeProgram from './pages/ContributeProgram';
+import ContributeExercise from './pages/ContributeExercise';
 
 
 function App() {
@@ -35,7 +37,10 @@ function App() {
           <Route exact path='/program/:id' element={<KeycloakRoute role={ROLES.User}><Program /></KeycloakRoute>} />
           <Route path='/workouts' element={<KeycloakRoute role={ROLES.User}><Workouts /></KeycloakRoute>} />
           <Route path='/workout' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
-          <Route path='/contributor' element={<KeycloakRoute role={ROLES.Contributor}><Contributor /></KeycloakRoute>} />
+          <Route path='/contribute-program' element={<KeycloakRoute role={ROLES.Contributor}><ContributeProgram /></KeycloakRoute>} />
+          <Route path='/contribute-workout' element={<KeycloakRoute role={ROLES.Contributor}><ContributeWorkOut /></KeycloakRoute>} />
+          <Route path='/contribute-exercise' element={<KeycloakRoute role={ROLES.Contributor}><ContributeExercise /></KeycloakRoute>} />
+
 
 
 

@@ -1,25 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { addProgram } from '../../api/contribute';
-import './ContributeForm.css';
+import './ProgramForm.css';
 import keycloak from '../../keycloak';
 
-
-function ContributeForm() {
+function ProgramForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let program = { 
-        name: title, 
-        author: keycloak.tokenParsed.name,
-        description: description
+    let program = {
+      name: title,
+      author: keycloak.tokenParsed.name,
+      description: description,
     };
     try {
-      const result =  addProgram(program);
+      const result = await addProgram(program);
       console.log(result);
       setTitle('');
       setDescription('');
+
     } catch (error) {
       console.error(error);
     }
@@ -45,12 +45,15 @@ function ContributeForm() {
         />
       </fieldset>
       <fieldset className='contribute-fieldset'>
-        <label htmlFor='workouts'>Workouts (separate with commas)</label>
-        <input type='text' id='workouts' />
+        <legend>Workouts</legend>
+        <select>
+          <option>workout 1</option>
+          <option>workout 2</option>
+        </select>
       </fieldset>
       <button type='submit'>Add Program</button>
     </form>
   );
 }
 
-export default ContributeForm;
+export default ProgramForm;

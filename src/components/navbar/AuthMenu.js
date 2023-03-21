@@ -21,7 +21,7 @@ function AuthMenu() {
             
           {keycloak.hasRealmRole(ROLES.Contributor) && (
               <li>
-                <NavLink to='/contributor' className='menu-link button-animation'>
+                <NavLink to='/contribute-program' className='menu-link button-animation'>
                   Contribute
                 </NavLink>
               </li>
