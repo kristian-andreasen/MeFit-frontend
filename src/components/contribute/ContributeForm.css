@@ -1,0 +1,9 @@
+.contribute-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contribute-fieldset {
+  display: flex;
+  flex-direction: column;
+}

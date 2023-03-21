@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './SignUpForm.css';
 
-function SignUpInfo() {
+function SignUpForm() {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
@@ -48,4 +48,4 @@ function SignUpInfo() {
   );
 }
 
-export default SignUpInfo;
+export default SignUpForm;
