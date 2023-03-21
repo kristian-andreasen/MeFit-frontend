@@ -18,6 +18,16 @@ function AuthMenu() {
       {keycloak.authenticated && (
         <>
           <ul className='menu-list main-menu right-menu'>
+
+
+          {keycloak.hasRealmRole(ROLES.Admin) && (
+              <li>
+                <NavLink to='/admin' className='menu-link button-animation'>
+                  Admin page
+                </NavLink>
+              </li>
+            )           
+            }
             
           {keycloak.hasRealmRole(ROLES.Contributor) && (
               <li>
@@ -27,6 +37,8 @@ function AuthMenu() {
               </li>
             )           
             }
+            
+
 
 
           
