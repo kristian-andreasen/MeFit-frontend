@@ -17,7 +17,6 @@ import Contributor from './pages/contributor';
 import SignUpForm from './pages/SignUpForm';
 import AdminPage from './pages/AdminPage';
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +26,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/faq' element={<FAQ />} />
           <Route path='signup' element={<KeycloakRoute role={ROLES.User}><SignUpForm /></KeycloakRoute>} />
+
+          <Route path='/signup' element={<SignUpInfo />} />
 
 
           <Route path='/profile' element={<KeycloakRoute role={ROLES.User}><Profile /></KeycloakRoute>} />

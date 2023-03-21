@@ -4,11 +4,13 @@ import Backdrop from '../Backdrop';
 import { useState } from 'react';
 import './GoalFormModal.css';
 import ModalButton from '../ModalButton';
+import SelectProgram from '../programs/SelectProgram';
 
 function GoalFormModal({ handleClose, text }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [goalName, setGoalName] = useState('');
   const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -39,7 +41,14 @@ function GoalFormModal({ handleClose, text }) {
   };
 
   const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
+    //setStartDate(event.target.value);
+
+    const startDate = event.target.value;
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(startDateObj.setDate(startDateObj.getDate() + 7));
+
+    setStartDate(startDate);
+    setEndDate(endDateObj.toISOString().slice(0, 10)); // Format date as YYYY-MM-DD
   };
 
   const handleSubmit = (e) => {
@@ -62,7 +71,7 @@ function GoalFormModal({ handleClose, text }) {
         animate='visible'
         exit='exit'
       >
-        <h2>Create Goal</h2>
+        <h2>Create Weekly Goal</h2>
         <form onSubmit={handleSubmit} className='create-goal-form'>
           <label htmlFor='goalName'>Goal Name</label>
           <input
@@ -71,6 +80,8 @@ function GoalFormModal({ handleClose, text }) {
             value={goalName}
             onChange={handleGoalNameChange}
           />
+          <label>Program</label>
+          <SelectProgram />
           <label htmlFor='startDate'>Start Date</label>
           <input
             type='date'
@@ -78,10 +89,13 @@ function GoalFormModal({ handleClose, text }) {
             value={startDate}
             onChange={handleStartDateChange}
           />
-          <button type='submit' className='submit-button'>Create Goal</button>
+          <label htmlFor='endDate'>End Date</label>
+          <input type='date' id='endDate' value={endDate} readOnly />
+          <button type='submit' className='submit-button'>
+            Create Goal
+          </button>
         </form>
         <ModalButton onClick={handleClose} label='Close' />
-        
       </motion.div>
     </Backdrop>
   );
