@@ -15,6 +15,7 @@ import Program from './components/programs/Program';
 import Workout from './components/workout/Workout';
 import Contributor from './pages/contributor';
 import SignUpForm from './pages/SignUpForm';
+import AdminPage from './pages/AdminPage';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path='/workouts' element={<KeycloakRoute role={ROLES.User}><Workouts /></KeycloakRoute>} />
           <Route path='/workout' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
           <Route path='/contributor' element={<KeycloakRoute role={ROLES.Contributor}><Contributor /></KeycloakRoute>} />
+          <Route path='/admin' element={<KeycloakRoute role={ROLES.Admin}><AdminPage/></KeycloakRoute>}/>
 
 
 

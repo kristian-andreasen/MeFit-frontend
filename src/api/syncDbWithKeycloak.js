@@ -25,7 +25,7 @@ export const getJwtInfo = async () => {
 
   export const postSignupData = async (data) => {
     try {
-      const response = await fetch(`${apiURL}/user_accs`,{
+      const response = await fetch(`${apiURL}/profiles`,{
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -43,6 +43,7 @@ export const getJwtInfo = async () => {
     catch (error){
       return [error.message,null];
     }
+    
 
 
 

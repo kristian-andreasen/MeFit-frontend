@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
-import { getJwtInfo, postSignupData, test } from '../api/syncDbWithKeycloak';
+import { useState } from 'react';
+import { postSignupData } from '../api/syncDbWithKeycloak';
 import keycloak from '../keycloak';
 
 import './SignUpForm.css';
 
 function SignUpInfo() {
-  const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
-  const [jwtAccInfo, setJwtAccInfo] = useState({})
 
   
 
