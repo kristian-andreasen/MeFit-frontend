@@ -3,6 +3,7 @@ import apiURL from "../const/apiUrl";
 export const getWorkoutById = async (id) => {
   try {
     const response = await fetch(`${apiURL}/workouts/${id}`, {
+      method: 'GET',
       mode: 'cors',
     });
     if (!response.ok) {
