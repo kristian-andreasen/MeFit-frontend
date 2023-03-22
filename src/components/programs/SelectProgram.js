@@ -1,7 +1,7 @@
 import { getAllPrograms } from '../../api/fetchProgramData';
 import { useEffect, useState } from 'react';
 
-function SelectProgram() {
+function SelectProgram({ onSelect }) {
   const [programs, setPrograms] = useState([]);
 
   useEffect(() => {
@@ -12,11 +12,19 @@ function SelectProgram() {
     }
     fetchPrograms();
   }, []);
+  
+  const handleSelectChange = (e) => {
+    const programId = parseInt(e.target.value);
+    const selectedProgram = programs.find((program) => program.id === programId);
+    console.log(selectedProgram); // should log the selected program object
+    onSelect(selectedProgram);
+  };
+
   return (
-    <select>
-      <option>-- Select --</option>
+    <select onChange={handleSelectChange}>
+      <option value="">-- Select --</option>
       {programs.map((program) => (
-        <option className='program-item' key={program.id}>
+        <option className='program-item' key={program.id} value={program.id}>
           {program.name}
         </option>
       ))}
