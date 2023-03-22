@@ -1,27 +1,19 @@
 import { useState } from 'react';
-import { postSignupData } from '../api/syncDbWithKeycloak';
-import keycloak from '../keycloak';
 
-import './SignUpForm.css';
+import './SignUpInfo.css';
 
-function SignUpForm() {
+function SignUpInfo() {
+  const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
 
-
   function handleSubmit(event) {
     event.preventDefault();
-    let data = {
-      id: keycloak.tokenParsed.sub,
-      first_name: keycloak.tokenParsed.given_name,
-      email: keycloak.tokenParsed.email,
-      last_name: keycloak.tokenParsed.family_name,
-      role: "user"
-    }
-    postSignupData(data);
-    
-
+    console.log('Name:', name);
+    console.log('Age:', age);
+    console.log('Weight:', weight);
+    console.log('Height:', height);
   }
   return (
     <form onSubmit={handleSubmit} className='signup-form'>
@@ -56,4 +48,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default SignUpInfo;
