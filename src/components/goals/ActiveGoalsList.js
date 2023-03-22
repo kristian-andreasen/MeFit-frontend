@@ -10,12 +10,12 @@ function ActiveGoalsList() {
 
   useEffect(() => {
     async function getGoals() {
-      const transformedGoals = await fetchGoals(id);
-      console.log(transformedGoals);
-      setGoals(transformedGoals);
+      const [, data] = await fetchGoals();
+      console.log(data);
+      setGoals(data);
     }
     getGoals();
-  }, [id]);
+  }, []);
 
   return (
     <section className='active-goals-list-container'>
