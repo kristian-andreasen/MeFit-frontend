@@ -1,5 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Backdrop from '../Backdrop';
+
+import { postGoal } from '../../api/postGoal';
 
 import { useState } from 'react';
 import './GoalFormModal.css';
@@ -11,6 +13,7 @@ function GoalFormModal({ handleClose, text }) {
   const [goalName, setGoalName] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [goalProgram, setProgram] = useState('');
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -45,16 +48,32 @@ function GoalFormModal({ handleClose, text }) {
 
     const startDate = event.target.value;
     const startDateObj = new Date(startDate);
-    const endDateObj = new Date(startDateObj.setDate(startDateObj.getDate() + 7));
+    const endDateObj = new Date(
+      startDateObj.setDate(startDateObj.getDate() + 7)
+    );
 
     setStartDate(startDate);
     setEndDate(endDateObj.toISOString().slice(0, 10)); // Format date as YYYY-MM-DD
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Do something with form data
-    close();
+    let goalData = {
+      name: goalName,
+      startDate: startDate,
+      endDate: endDate,
+      //author: keycloak.tokenParsed.name,
+    };
+
+    const newGoal = await postGoal(goalData);
+    console.log('New goal created:', newGoal);
+
+    // reset the form fields
+    setGoalName('');
+    setStartDate('');
+    setEndDate('');
+    //close();
   };
 
   const handleModalClick = (e) => {
