@@ -63,7 +63,6 @@ function GoalFormModal({ handleClose, text }) {
       name: goalName,
       startDate: startDate,
       endDate: endDate,
-      program: goalProgram,
       //author: keycloak.tokenParsed.name,
     };
 
@@ -74,7 +73,6 @@ function GoalFormModal({ handleClose, text }) {
     setGoalName('');
     setStartDate('');
     setEndDate('');
-    setProgram('');
     //close();
   };
 
