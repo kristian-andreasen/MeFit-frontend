@@ -1,4 +1,4 @@
-import { getGoalById } from '../../api/fetchUserData';
+import { getCurrentGoals } from '../../api/fetchUserData';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ function ActiveGoalsList() {
   useEffect(() => {
     // fetch the list of programs when the component mounts
     async function fetchGoal() {
-      const [, data] = await getGoalById(id);
+      const [, data] = await getCurrentGoals(id);
       setGoal(data);
     }
     fetchGoal();
