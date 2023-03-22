@@ -1,0 +1,12 @@
+.contribute-workout-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contribute-workout-title {
+  font-size: 44px;
+  margin: 20px 0;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.4);
+}

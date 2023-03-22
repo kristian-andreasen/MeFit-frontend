@@ -4,14 +4,10 @@ import keycloak from '../keycloak';
 
 import './SignUpForm.css';
 
-function SignUpInfo() {
+function SignUpForm() {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
-
-  
-
-
 
 
   function handleSubmit(event) {
@@ -24,10 +20,6 @@ function SignUpInfo() {
       role: "user"
     }
     postSignupData(data);
-
-    
-
-
     
 
   }
@@ -64,4 +56,4 @@ function SignUpInfo() {
   );
 }
 
-export default SignUpInfo;
+export default SignUpForm;
