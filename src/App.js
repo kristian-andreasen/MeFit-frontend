@@ -32,7 +32,7 @@ function App() {
           <Route path='/faq' element={<FAQ />} />
           <Route path='signup' element={<KeycloakRoute role={ROLES.User}><SignUpForm /></KeycloakRoute>} />
 
-          <Route path='/signup' element={<SignUpInfo />} />
+          <Route path='/signup' element={<SignUpForm />} />
 
 
           <Route path='/profile' element={<KeycloakRoute role={ROLES.User}><Profile /></KeycloakRoute>} />
@@ -48,7 +48,6 @@ function App() {
           <Route path='/contribute-exercise' element={<KeycloakRoute role={ROLES.Contributor}><ContributeExercise /></KeycloakRoute>} />
 
 
-          //<Route path='/contributor' element={<KeycloakRoute role={ROLES.Contributor}><Contributor /></KeycloakRoute>} />
           <Route path='/admin' element={<KeycloakRoute role={ROLES.Admin}><AdminPage/></KeycloakRoute>}/>
 
 
