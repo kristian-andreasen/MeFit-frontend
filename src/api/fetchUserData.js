@@ -21,3 +21,9 @@ export const getCurrentGoals = async () => {
     return [error.message, []];
   }
 };
+
+function lol(
+  
+)
+
+//asdas
