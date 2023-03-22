@@ -5,6 +5,7 @@ function About() {
     <>
       <Navbar />
       <p>about</p>
+      {sessionStorage.getItem("id")}
     </>
   );
 }

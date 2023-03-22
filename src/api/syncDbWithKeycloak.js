@@ -23,6 +23,27 @@ export const getJwtInfo = async () => {
     }
   };
 
+  export const getSignUpData = async(id) =>{
+    try {
+      //'programs' should be changed to 'program'
+      const response = await fetch(`${apiURL}/profiles/${id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${keycloak.token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Could not fetch workout');
+      }
+      const data = await response.json();
+      return [null, data];
+    } catch (error) {
+      return [error.message, null];
+    }
+
+  }
+
   export const postSignupData = async (data) => {
     try {
       const response = await fetch(`${apiURL}/profiles`,{

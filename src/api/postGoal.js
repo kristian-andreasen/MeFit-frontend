@@ -14,6 +14,7 @@ export async function postGoal(goalData) {
   if (!response.ok) {
     throw new Error('Could not create goal');
   }
-  const data = JSON.stringify(response);
+  const data = response.json();
+
   return data;
 }
