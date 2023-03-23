@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { postSignupData, updateUserData } from '../api/syncDbWithKeycloak';
 import keycloak from '../keycloak';
 
@@ -8,7 +9,7 @@ function SignUpForm() {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
-
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +20,12 @@ function SignUpForm() {
       height: height,
     }
     updateUserData(data,keycloak.tokenParsed.sub);
-    
+    let oldData = JSON.parse(sessionStorage.getItem("userData"));
+    oldData.age = age;
+    oldData.weight = weight;
+    oldData.height = height;
+    sessionStorage.setItem("userData",JSON.stringify(oldData))
+    navigate("/")
 
   }
   return (
