@@ -1,8 +1,9 @@
 import { getAllPrograms } from '../../api/fetchProgramData';
 import { useEffect, useState } from 'react';
 
-function SelectProgram() {
+function SelectProgram({ onSelect }) {
   const [programs, setPrograms] = useState([]);
+  const [selectedProgram, setSelectedProgram] = useState(null);
 
   useEffect(() => {
     // fetch the list of programs when the component mounts
@@ -12,11 +13,19 @@ function SelectProgram() {
     }
     fetchPrograms();
   }, []);
+
+  const handleSelectChange = (event) => {
+    const programId = event.target.value;
+    const program = programs.find((p) => p.id === Number(programId));
+    setSelectedProgram(program);
+    onSelect(program);
+  };
+
   return (
-    <select>
-      <option>-- Select --</option>
+    <select onChange={handleSelectChange}>
+      <option value=''>-- Select --</option>
       {programs.map((program) => (
-        <option className='program-item' key={program.id}>
+        <option className='program-item' key={program.id} value={program.id}>
           {program.name}
         </option>
       ))}

@@ -8,12 +8,12 @@ import './GoalFormModal.css';
 import ModalButton from '../ModalButton';
 import SelectProgram from '../programs/SelectProgram';
 
-function GoalFormModal({ handleClose, text }) {
+function GoalFormModal({ handleClose }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [goalName, setGoalName] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [goalProgram, setProgram] = useState('');
+  const [selectedProgram, setSelectedProgram] = useState(null);
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -56,6 +56,10 @@ function GoalFormModal({ handleClose, text }) {
     setEndDate(endDateObj.toISOString().slice(0, 10)); // Format date as YYYY-MM-DD
   };
 
+  const handleSelectChange = (selectedOption) => {
+    setSelectedProgram(selectedOption);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Do something with form data
@@ -63,7 +67,7 @@ function GoalFormModal({ handleClose, text }) {
       name: goalName,
       startDate: startDate,
       endDate: endDate,
-      //author: keycloak.tokenParsed.name,
+      program: selectedProgram, // Add selected program to request payload
     };
 
     const newGoal = await postGoal(goalData);
@@ -73,6 +77,7 @@ function GoalFormModal({ handleClose, text }) {
     setGoalName('');
     setStartDate('');
     setEndDate('');
+    setSelectedProgram(null);
     //close();
   };
 
@@ -100,7 +105,7 @@ function GoalFormModal({ handleClose, text }) {
             onChange={handleGoalNameChange}
           />
           <label>Program</label>
-          <SelectProgram />
+          <SelectProgram onSelect={handleSelectChange} /> {/* Pass handleProgramChange as a prop */}
           <label htmlFor='startDate'>Start Date</label>
           <input
             type='date'

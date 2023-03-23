@@ -10,7 +10,7 @@ export async function addProgram(program) {
     },
     body: JSON.stringify(program),
   });
-  const data = JSON.stringify(response);
+  const data = response.json();
   return data;
 }
 
@@ -27,5 +27,6 @@ export async function addExercise(exercise) {
     const errorMessage = `Failed to add exercise: ${response.status} - ${response.statusText}`;
     throw new Error(errorMessage);
   }
-  return response.json();
+  const data = response.json();
+  return data;
 }
