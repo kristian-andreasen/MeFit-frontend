@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Workouts from './pages/Workouts';
 import Programs from './pages/Programs';
 import Goals from './pages/Goals';
-import Loading from './components/loading/Loading';
+import PostLoginLoading from './components/loading/PostLoginLoading';
 import VideoBackground from './components/videoBackground/VideoBackground';
 import Program from './components/programs/Program';
 import Workout from './components/workout/Workout';
@@ -52,7 +52,7 @@ function App() {
 
 
           
-          <Route path='/loading' element={<Loading />} />
+          <Route path='/loading' element={<PostLoginLoading />} />
           <Route path='/video' element={<VideoBackground />} />
         </Routes>
       </div>
