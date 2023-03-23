@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 function SelectProgram({ onSelect }) {
   const [programs, setPrograms] = useState([]);
+  const [selectedProgram, setSelectedProgram] = useState(null);
 
   useEffect(() => {
     // fetch the list of programs when the component mounts
@@ -12,17 +13,17 @@ function SelectProgram({ onSelect }) {
     }
     fetchPrograms();
   }, []);
-  
-  const handleSelectChange = (e) => {
-    const programId = parseInt(e.target.value);
-    const selectedProgram = programs.find((program) => program.id === programId);
-    console.log(selectedProgram); // should log the selected program object
-    onSelect(selectedProgram);
+
+  const handleSelectChange = (event) => {
+    const programId = event.target.value;
+    const program = programs.find((p) => p.id === Number(programId));
+    setSelectedProgram(program);
+    onSelect(program);
   };
 
   return (
     <select onChange={handleSelectChange}>
-      <option value="">-- Select --</option>
+      <option value=''>-- Select --</option>
       {programs.map((program) => (
         <option className='program-item' key={program.id} value={program.id}>
           {program.name}
