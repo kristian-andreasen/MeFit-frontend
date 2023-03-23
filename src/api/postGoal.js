@@ -16,6 +16,7 @@ export async function postGoal(goalData) {
         description: goalData.program.description,
         author: goalData.program.author,
         imageURL: goalData.program.imageURL,
+        workouts: goalData.program.workouts,
       },
     }),
   });
