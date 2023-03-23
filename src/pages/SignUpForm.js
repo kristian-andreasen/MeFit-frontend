@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { postSignupData } from '../api/syncDbWithKeycloak';
+import { postSignupData, updateUserData } from '../api/syncDbWithKeycloak';
 import keycloak from '../keycloak';
 
 import './SignUpForm.css';
@@ -14,12 +14,11 @@ function SignUpForm() {
     event.preventDefault();
     let data = {
       id: keycloak.tokenParsed.sub,
-      first_name: keycloak.tokenParsed.given_name,
-      email: keycloak.tokenParsed.email,
-      last_name: keycloak.tokenParsed.family_name,
-      role: "user"
+      age: age,
+      weight: weight,
+      height: height,
     }
-    postSignupData(data);
+    updateUserData(data,keycloak.tokenParsed.sub);
     
 
   }

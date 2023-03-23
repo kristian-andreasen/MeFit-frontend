@@ -21,18 +21,18 @@ export const initialize = () => {
 /* Set redirectUri to "/profile" and then login
 */
 export const loginWithRedirect = () => {
-  keycloak.redirectUri= window.location.origin + "/profile";
+  keycloak.redirectUri= window.location.origin + "/loading";
   keycloak.login()
 }
 /* Set redirectUri to "/" and then logout
 */
 export const logoutWithRedirect = () => {
-  keycloak.redirectUri= window.location.origin + "/";
+  keycloak.redirectUri= window.location.origin + "/loading";
   keycloak.logout();
 }
 
 export const registerWithRedirect = () => {
-  keycloak.redirectUri= window.location.origin + "/signup";
+  keycloak.redirectUri= window.location.origin + "/loading";
   keycloak.register()
 
 }

@@ -17,8 +17,8 @@
   animation: l 1s steps(4) infinite;
 }
 
-/* @keyframes l {
+@keyframes l {
   to {
     clip-path: inset(0 -1ch 0 0)
   }
-} */
+}

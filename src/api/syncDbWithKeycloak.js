@@ -1,27 +1,30 @@
 import apiURL from "../const/apiUrl";
 import keycloak from "../keycloak";
 
-
-
-export const getJwtInfo = async () => {
+  export const updateUserData = async(data,id)=>{
     try {
-      const response = await fetch(`${apiURL}/user_accs/info`, {
-        method: 'GET',
+      const response = await fetch(`${apiURL}/profiles/${id}`,{
+        method: 'PUT',
         mode: 'cors',
         headers: {
             Authorization: `Bearer ${keycloak.token}`,
             'Content-Type': 'application/json',
-          }
+          },
+          body: JSON.stringify(data)
       });
-      if (!response.ok) {
-        throw new Error('Could not fetch jwt info');
+      if(!response.ok){
+        throw new Error('could not post signup');
       }
-      const data = await response.json();
-      return [null, data];
-    } catch (error) {
-      return [error.message, null];
+      const dataReturn = response.json();
+      return [null,dataReturn];
     }
-  };
+    catch (error){
+      return [error.message,null];
+    }
+
+  }
+
+
 
   export const getSignUpData = async(id) =>{
     try {
@@ -58,8 +61,8 @@ export const getJwtInfo = async () => {
       if(!response.ok){
         throw new Error('could not post signup');
       }
-      const responseJson = JSON.stringify(response);
-      return [null,responseJson];
+      const dataReturn = response.json();
+      return [null,dataReturn];
     }
     catch (error){
       return [error.message,null];
