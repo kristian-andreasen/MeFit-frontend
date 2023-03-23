@@ -8,7 +8,16 @@ export async function postGoal(goalData) {
       Authorization: `Bearer ${keycloak.token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(goalData),
+    body: JSON.stringify({
+      ...goalData,
+      program: {
+        id: goalData.program.id,
+        name: goalData.program.name,
+        description: goalData.program.description,
+        author: goalData.program.author,
+        imageURL: goalData.program.imageURL,
+      },
+    }),
   });
 
   if (!response.ok) {
