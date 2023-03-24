@@ -5,8 +5,8 @@ import './ExerciseForm.css';
 function ExerciseForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [numSets, setNumSets] = useState('');
-  const [numReps, setNumReps] = useState('');
+  const [numSets, setNumSets] = useState(0);
+  const [numReps, setNumReps] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,8 +14,8 @@ function ExerciseForm() {
     const exercise = {
       name: name,
       description: description,
-      setCounts: numSets,
-      reps: numReps,
+      sets: numSets,
+      repetitions: numReps
     };
 
     try {

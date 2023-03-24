@@ -19,7 +19,7 @@ function PostLoginLoading() {
             role: "user",
             age: 0,
             weight: 0,
-            height: 0,
+            height: 0
           }
           try {
               getSignUpData(keycloak.tokenParsed.sub).then((response)=>{

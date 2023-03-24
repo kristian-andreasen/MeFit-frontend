@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getAllExercises } from '../../api/fetchExercises';
 import './WorkoutForm.css';
 
 function WorkoutForm() {
+  const [exercises, setExercises] = useState([])
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedExercises, setSelectedExercises] = useState([]);
+
+
+
+  useEffect(()=>{
+    async function fetchExercises() {
+      const [, data] = await getAllExercises();
+      setExercises(data);
+    }
+    fetchExercises();
+
+  },[])
 
   const handleExerciseChange = (e) => {
     const selectedExerciseIds = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     );
+    
     setSelectedExercises(selectedExerciseIds);
   };
   return (
@@ -43,11 +57,15 @@ function WorkoutForm() {
           value={selectedExercises}
           onChange={handleExerciseChange}
         >
-          <option value='1'>Push-ups</option>
-          <option value='2'>Squats</option>
-          <option value='3'>Lunges</option>
-          <option value='4'>Plank</option>
-          <option value='5'>Jumping Jacks</option>
+          <option value=''>-- Select --</option>
+          {exercises.map((exercises) => (
+        <option className='program-item' key={exercises.id} value={exercises.id}>
+          {exercises.name}
+        </option>
+      ))}
+          
+          
+          
         </select>
       </div>
       <button type='submit'>Submit</button>
