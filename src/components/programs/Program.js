@@ -15,6 +15,7 @@ function Program() {
   useEffect(() => {
     async function fetchProgram() {
       const [, data] = await getProgramById(id); // fetch program by id
+      console.log(data);
       setProgram(data);
     }
     fetchProgram();
