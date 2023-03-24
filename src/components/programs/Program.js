@@ -49,7 +49,7 @@ function Program() {
             className='open-modal-button'
             onClick={() => (modalOpen ? close() : open())}
           >
-            Create Goal
+            Start now
           </motion.button>
 
           {modalOpen && (
