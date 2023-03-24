@@ -4,6 +4,7 @@ import apiURL from '../const/apiUrl';
 export async function addProgram(program) {
   const response = await fetch(`${apiURL}/programs`, {
     method: 'POST',
+    mode: 'cors',
     headers: {
       Authorization: `Bearer ${keycloak.token}`,
       'Content-Type': 'application/json',
@@ -17,6 +18,7 @@ export async function addProgram(program) {
 export async function addExercise(exercise) {
   const response = await fetch(`${apiURL}/exercises`, {
     method: 'POST',
+    mode: 'cors',
     headers: {
       Authorization: `Bearer ${keycloak.token}`,
       'Content-Type': 'application/json',

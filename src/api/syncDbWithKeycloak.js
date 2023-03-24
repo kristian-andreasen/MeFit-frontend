@@ -4,7 +4,7 @@ import keycloak from "../keycloak";
   export const updateUserData = async(data,id)=>{
     try {
       const response = await fetch(`${apiURL}/profiles/${id}`,{
-        method: 'PUT',
+        method: 'PATCH',
         mode: 'cors',
         headers: {
             Authorization: `Bearer ${keycloak.token}`,

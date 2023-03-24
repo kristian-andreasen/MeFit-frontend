@@ -67,7 +67,7 @@ function GoalFormModal({ handleClose }) {
       name: goalName,
       startDate: startDate,
       endDate: endDate,
-      program: selectedProgram, // Add selected program to request payload
+      program: selectedProgram // Add selected program to request payload
     };
 
     const newGoal = await postGoal(goalData);
