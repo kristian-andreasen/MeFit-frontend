@@ -34,7 +34,6 @@ function PostLoginLoading() {
                 } else {
                   sessionStorage.setItem("userData",JSON.stringify(response[1]));
                   let tempData = JSON.parse(sessionStorage.userData);
-                  console.log(tempData.age)
                   if(tempData.age===0 || tempData.weight===0 || tempData.height===0){
                     navigate("/signup")
                   } else {navigate("/")}
