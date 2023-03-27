@@ -11,6 +11,7 @@ export async function postGoal(goalData) {
     body: JSON.stringify({
       ...goalData,
       userId: keycloak.tokenParsed.sub,
+      program: undefined
 
       
     }),
