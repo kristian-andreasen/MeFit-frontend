@@ -10,9 +10,9 @@ export async function postGoal(goalData) {
     },
     body: JSON.stringify({
       ...goalData,
-      userId: keycloak.tokenParsed.sub, // Add the user ID to the request payload
-      programId: goalData.program.id, // Send the program ID instead of the program object
-      program: undefined, // Remove the program object from the payload
+      userId: keycloak.tokenParsed.sub,
+
+      
     }),
   });
 

@@ -1,16 +1,55 @@
 import './CompletedGoalsList.css';
 
+
+
+
+
+
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchGoals } from '../../api/fetchGoals';
+
+
+
 function CompletedGoalsList() {
+  const [goals, setGoals] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function getGoals() {
+      const [, data] = await fetchGoals();
+      console.log(data);
+      setGoals(data);
+    }
+    getGoals();
+  }, []);
+
   return (
-    <section className='completed-goals-container'>
-      <h2 className='completed-goals-title'>Completed Goals</h2>
-      <p>Your accomplished goals</p>
-      <ul className='completed-goals-list'>
-        <li className='completed-goals-item'>completed goal 1</li>
-        <li className='completed-goals-item'>completed goal 2</li>
-      </ul>
+    <section className='active-goals-list-container'>
+      <h2 className='active-goals-title'>Completed goals</h2>
+      {goals.length === 0 ? (
+        <ul className='goals-list' id='goal'>
+          {goals.map((goal) => (
+            <>
+            {goal.achieved&&(<li key={goal.id}>
+              <div className='goal-details'>
+                <h3 className='goal-name'>{goal.name}</h3>
+                <p className='goal-start-date'>Start Date: {goal.startDate}</p>
+                <p className='goal-end-date'>End Date: {goal.endDate}</p>
+                <p className='goal-achieved'>
+                  {goal.achieved ? 'Achieved' : 'Not Achieved'}
+                </p>
+              </div>
+            </li>)}
+            </>
+          ))}
+        </ul>
+      ) : (
+        <p>You have not completed any goals.</p>
+      )}
     </section>
   );
 }
 
 export default CompletedGoalsList;
+
