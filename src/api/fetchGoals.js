@@ -3,7 +3,8 @@ import keycloak from '../keycloak';
 
 export async function fetchGoals() {
   try {
-    const response = await fetch(`${apiURL}/goals`, {
+    const userId = keycloak.tokenParsed.sub; // get the user ID from Keycloak
+    const response = await fetch(`${apiURL}/goals?userId=${userId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${keycloak.token}`,

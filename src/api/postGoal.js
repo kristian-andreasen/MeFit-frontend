@@ -10,14 +10,9 @@ export async function postGoal(goalData) {
     },
     body: JSON.stringify({
       ...goalData,
-      program: {
-        id: goalData.program.id,
-        name: goalData.program.name,
-        description: goalData.program.description,
-        author: goalData.program.author,
-        imageURL: goalData.program.imageURL,
-        workouts: goalData.program.workouts,
-      },
+      userId: keycloak.tokenParsed.sub, // Add the user ID to the request payload
+      programId: goalData.program.id, // Send the program ID instead of the program object
+      program: undefined, // Remove the program object from the payload
     }),
   });
 
