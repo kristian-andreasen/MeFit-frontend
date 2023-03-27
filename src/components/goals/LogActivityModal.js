@@ -6,7 +6,7 @@ import { useState } from 'react';
 import ModalButton from '../ModalButton';
 import GoalSelect from './GoalSelect';
 
-function LogActivityModal({ handleClose, text }) {
+function LogActivityModal({ handleClose }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [goalName, setGoalName] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -33,14 +33,6 @@ function LogActivityModal({ handleClose, text }) {
       y: '100vh',
       opacity: 0,
     },
-  };
-
-  const handleGoalNameChange = (event) => {
-    setGoalName(event.target.value);
-  };
-
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
   };
 
   const handleSubmit = (e) => {

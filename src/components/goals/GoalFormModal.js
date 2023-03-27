@@ -61,7 +61,7 @@ function GoalFormModal({ handleClose }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+   
     // Do something with form data
     let goalData = {
       name: goalName,

@@ -10,16 +10,20 @@ import ActiveGoalsList from '../components/goals/ActiveGoalsList';
 import { NavLink } from 'react-router-dom';
 import LogActivityModal from '../components/goals/LogActivityModal';
 import CompletedGoalsList from '../components/goals/CompletedGoalsList';
+import DeleteGoalsModal from '../components/goals/DeleteGoalsModal';
 
 
 function Goals() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activityModalOpen, setActivityModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
   const closeActivityModal = () => setActivityModalOpen(false);
   const openActivityModal = () => setActivityModalOpen(true);
+  const closeDeleteModal = () => setDeleteModalOpen(false);
+  const openDeleteModal = () => setDeleteModalOpen(true);
 
   return (
     <>
@@ -61,6 +65,25 @@ function Goals() {
             />
           )}
         </div>
+
+        <div className='delete-goal-container'>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className='open-modal-button-delete'
+            onClick={() => (deleteModalOpen ? closeDeleteModal() : openDeleteModal())}
+          >
+            Delete
+          </motion.button>
+
+          {deleteModalOpen && (
+            <DeleteGoalsModal deleteModalOpen={deleteModalOpen} handleClose={closeDeleteModal} />
+          )}
+        </div>
+
+
+
+
         <AnimatePresence
           initial={false}
           mode='wait'

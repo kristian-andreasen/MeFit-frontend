@@ -2,30 +2,38 @@ import { useEffect, useState } from 'react';
 import { getCurrentGoals } from '../../api/fetchUserData';
 
 import './GoalSelect.css'
+import './../../api/fetchGoals'
+import { fetchGoals } from './../../api/fetchGoals';
 
-function GoalSelect() {
-  const [goal, setGoals] = useState([]);
+function GoalSelect({ onSelect }) {
+  const [goals, setGoals] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const [, data] = await getCurrentGoals();
+    const getGoals = async () => {
+      const [, data] = await fetchGoals();
       setGoals(data);
     };
-    fetchData();
+    getGoals();
   }, []);
+
+  const handleSelectChange = (event) =>{
+    const goalId = event.target.value;
+    const goal = goals.find((g) => g.id === Number(goalId));
+    console.log(goal);
+    onSelect(goal);
+    
+  }
 
 
   return (
-    <form className='select-current-goal-form'>
-      <select name='goal' id='goal'>
+      <select onChange={handleSelectChange}>
         <option value=''>--Select Goal--</option>
-        {goal.map((goal) => (
-          <option key={goal.id} value={goal.name}>
+        {goals.map((goal) => (
+          <option key={goal.id} value={goal.id}>
             {goal.name}
           </option>
         ))}
       </select>
-    </form>
   );
 }
 
