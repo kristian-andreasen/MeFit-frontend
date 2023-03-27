@@ -20,7 +20,6 @@ function ActiveGoalsList() {
   return (
     <section className='active-goals-list-container'>
       <h2 className='active-goals-title'>Active Goals</h2>
-      <p>Your current active goal (only 1 goal at a time):</p>
       {goals.length > 0 ? (
         <ul className='goals-list' id='goal'>
           {goals.map((goal) => (

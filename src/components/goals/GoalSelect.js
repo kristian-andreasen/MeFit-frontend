@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCurrentGoals } from '../../api/fetchUserData';
+import { getCurrentGoals } from '../../api/fetchGoalById';
 
 import './GoalSelect.css'
 import './../../api/fetchGoals'

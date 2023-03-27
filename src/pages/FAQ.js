@@ -5,7 +5,8 @@ function FAQ() {
   return (
     <>
       <Navbar />
-      <p>{keycloak.token}</p>
+      
+     <p>{keycloak.token}</p>
     </>
   );
 }
