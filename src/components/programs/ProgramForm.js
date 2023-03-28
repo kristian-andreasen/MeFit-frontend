@@ -33,24 +33,21 @@ function ProgramForm() {
 
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-
-
-      
-    
-    
+    event.preventDefault();    
     try {
       const tempList = [];
       selectedWorkouts.map((id)=>tempList.push(workouts[id-1]));
-      console.log(tempList)
-      const data1 = {
+      const data = {
         workouts: tempList,
         name: title,
+        author: "",
         description: description,
         category: "",
-        imageURL: ""
+        imageURL: "",
+        type: ""
       }
-      await addProgram(data1);
+      console.log(data)
+      await addProgram(data);
       //console.log(result);
       setTitle('');
       setDescription('');
