@@ -21,9 +21,9 @@ export const getWorkoutById = async (id) => {
   }
 };
 
-export const getAllWorkouts = async () => {
+export const getAllWorkouts = async (programId) => {
   try {
-    const response = await fetch(`${apiURL}/workouts`, {
+    const response = await fetch(`${apiURL}/programs/${programId}/workouts`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -35,9 +35,10 @@ export const getAllWorkouts = async () => {
       throw new Error('Could not fetch workout');
     }
     const data = await response.json();
-    return [null, data];
+    return data;
   } catch (error) {
-    return [error.message, null];
+    console.log('Error fetching workouts:', error);
+    return null;
   }
 };
 

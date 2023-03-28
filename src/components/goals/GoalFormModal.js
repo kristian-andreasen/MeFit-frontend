@@ -8,12 +8,15 @@ import './GoalFormModal.css';
 import ModalButton from '../ModalButton';
 import SelectProgram from '../programs/SelectProgram';
 
+import { getAllWorkouts } from '../../api/fetchWorkoutData';
+
 function GoalFormModal({ handleClose }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [goalName, setGoalName] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [selectedProgram, setSelectedProgram] = useState(null);
+  const [workouts, setWorkouts] = useState([]);
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -56,8 +59,19 @@ function GoalFormModal({ handleClose }) {
     setEndDate(endDateObj.toISOString().slice(0, 10)); // Format date as YYYY-MM-DD
   };
 
-  const handleSelectChange = (selectedOption) => {
+  const handleSelectChange = async (selectedOption) => {
+    console.log('Selected program:', selectedOption);
     setSelectedProgram(selectedOption);
+    const [error, workouts] = await getAllWorkouts(selectedOption.id);
+    if (error) {
+      console.log('Could not fetch workouts:', error);
+    } else {
+      if (workouts) {
+        setWorkouts(workouts);
+      } else {
+        console.log('Workouts is null or undefined');
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -68,8 +82,8 @@ function GoalFormModal({ handleClose }) {
       startDate: startDate,
       endDate: endDate,
       program: selectedProgram,
-      programIdd: selectedProgram.id // Add selected program to request payload
-      
+      programId: selectedProgram.id, // Add selected program to request payload
+      workouts: workouts,
     };
 
     const newGoal = await postGoal(goalData);
@@ -107,7 +121,8 @@ function GoalFormModal({ handleClose }) {
             onChange={handleGoalNameChange}
           />
           <label>Program</label>
-          <SelectProgram onSelect={handleSelectChange} /> {/* Pass handleProgramChange as a prop */}
+          <SelectProgram onSelect={handleSelectChange} />{' '}
+          {/* Pass handleProgramChange as a prop */}
           <label htmlFor='startDate'>Start Date</label>
           <input
             type='date'
