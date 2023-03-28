@@ -1,4 +1,4 @@
-const apiURL = process.env.API_URL;
-;
+const apiURL = process.env.REACT_APP_API_URL;
+
 
 export default apiURL;
