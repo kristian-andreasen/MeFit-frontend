@@ -1,4 +1,4 @@
-const apiURL = "mefit-backend-production.up.railway.app/api/v1";
+const apiURL = process.env.API_URL;
 ;
 
 export default apiURL;
