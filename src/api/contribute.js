@@ -11,6 +11,10 @@ export async function addProgram(program) {
     },
     body: JSON.stringify(program),
   });
+  if (!response.ok) {
+    const errorMessage = `Failed to add exercise: ${response.status} - ${response.statusText}`;
+    throw new Error(errorMessage);
+  }
   const data = response.json();
   return data;
 }

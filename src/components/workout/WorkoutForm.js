@@ -24,6 +24,7 @@ function WorkoutForm() {
     const selectedExerciseIds = Array.from(
       e.target.selectedOptions,
       (option) => option.value
+     
     );
     
     setSelectedExercises(selectedExerciseIds);
@@ -35,7 +36,8 @@ function WorkoutForm() {
     const data = {
       exercises: tempList,
       name: name,
-      description: description
+      description: description,
+      type: ""
     }
     await addWorkout(data);
     
