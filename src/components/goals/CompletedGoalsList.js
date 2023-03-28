@@ -27,11 +27,11 @@ function CompletedGoalsList() {
   return (
     <section className='active-goals-list-container'>
       <h2 className='active-goals-title'>Completed goals</h2>
-      {goals.length === 0 ? (
+      {true ? (
         <ul className='goals-list' id='goal'>
-          {goals.map((goal) => (
+          {goals.map((goal) => goal.achieved&&(
             <>
-            {goal.achieved&&(<li key={goal.id}>
+            <li key={goal.id}>
               <div className='goal-details'>
                 <h3 className='goal-name'>{goal.name}</h3>
                 <p className='goal-start-date'>Start Date: {goal.startDate}</p>
@@ -40,7 +40,7 @@ function CompletedGoalsList() {
                   {goal.achieved ? 'Achieved' : 'Not Achieved'}
                 </p>
               </div>
-            </li>)}
+            </li>
             </>
           ))}
         </ul>

@@ -22,7 +22,7 @@ function ActiveGoalsList() {
       <h2 className='active-goals-title'>Active Goals</h2>
       {goals.length > 0 ? (
         <ul className='goals-list' id='goal'>
-          {goals.map((goal) => (
+          {goals.map((goal) =>!goal.achieved&&(
             <li key={goal.id}>
               <div className='goal-details'>
                 <h3 className='goal-name'>{goal.name}</h3>
