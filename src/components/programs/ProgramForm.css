@@ -1,9 +1,16 @@
 .contribute-form {
   display: flex;
   flex-direction: column;
+  
 }
 
 .contribute-fieldset {
   display: flex;
   flex-direction: column;
+  
 }
+#exercises{
+  height: 200px;
+  width: 150px;
+}
+

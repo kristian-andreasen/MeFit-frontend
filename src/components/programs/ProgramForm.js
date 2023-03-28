@@ -13,6 +13,7 @@ function ProgramForm() {
   useEffect(()=>{
     async function fetchPrograms() {
       const [, data] = await getAllWorkouts();
+      data.programs = [];
       setWorkouts(data);
     }
     fetchPrograms();
@@ -42,15 +43,15 @@ function ProgramForm() {
       const tempList = [];
       selectedWorkouts.map((id)=>tempList.push(workouts[id-1]));
       console.log(tempList)
-      const data = {
+      const data1 = {
         workouts: tempList,
         name: title,
         description: description,
         category: "",
         imageURL: ""
       }
-      const result = await addProgram(data);
-      console.log(result);
+      await addProgram(data1);
+      //console.log(result);
       setTitle('');
       setDescription('');
 
