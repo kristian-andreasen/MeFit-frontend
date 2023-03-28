@@ -2,12 +2,16 @@ import './LogActivityModal.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import Backdrop from '../Backdrop';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ModalButton from '../ModalButton';
 import GoalSelect from './GoalSelect';
+import { updateGoalAchieved } from '../../api/updateGoal';
+
+
 
 function LogActivityModal({ handleClose }) {
   const [selectedGoal, setSelectedGoal] = useState(null);
+  const [completedWorkouts, setCompletedWorkouts] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
   const close = () => setModalOpen(false);
@@ -36,7 +40,53 @@ function LogActivityModal({ handleClose }) {
 
   const handleSelectChange = (selectedOption) => {
     setSelectedGoal(selectedOption);
-    console.log(selectedOption.program.workouts);
+    //console.log(selectedOption.program.workouts);
+    //setCheckedWorkoutIds([]);
+  };
+
+
+  useEffect(() => {
+    if (
+      selectedGoal &&
+      selectedGoal.program &&
+      completedWorkouts.length === selectedGoal.program.workouts.length
+    ) {
+      console.log('All workouts completed!');
+      const goalId = selectedGoal.id;
+      //const achieved = true;
+      console.log(goalId)
+      updateGoalAchieved(goalId)
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+        window.location.reload(); //refresh the page
+    }
+  }, [selectedGoal, completedWorkouts]);
+
+  const handleWorkoutChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked && !completedWorkouts.includes(value)) {
+      setCompletedWorkouts([...completedWorkouts, value]);
+      localStorage.setItem('completedWorkouts', JSON.stringify([...completedWorkouts, value]));
+    } else if (!checked && completedWorkouts.includes(value)) {
+      setCompletedWorkouts(completedWorkouts.filter((id) => id !== value));
+      localStorage.setItem('completedWorkouts', JSON.stringify(completedWorkouts.filter((id) => id !== value)));
+    }
+    
+    e.target.checked = completedWorkouts.includes(value);
+
+    if (
+      selectedGoal &&
+      selectedGoal.program &&
+      completedWorkouts.length === selectedGoal.program.workouts.length
+    ) {
+      console.log('All workouts completed!');
+      const goalId = selectedGoal.id;
+      //const achieved = true;
+      //console.log(goalId);
+      updateGoalAchieved(goalId)
+        .then((data) => console.log(data, goalId))
+        .catch((error) => console.error(error));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -69,8 +119,9 @@ function LogActivityModal({ handleClose }) {
                     type='checkbox'
                     id={workout.id}
                     name='workout'
-                    checked={workout.achieved}
                     value={workout.id}
+                    onChange={handleWorkoutChange}
+                    checked={completedWorkouts.includes(workout.id.toString())}
                   />
                   <label htmlFor={workout.id}>{workout.name}</label>
                 </li>
