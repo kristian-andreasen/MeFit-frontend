@@ -1,21 +1,55 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addProgram } from '../../api/contribute';
 import './ProgramForm.css';
 import keycloak from '../../keycloak';
+import { getAllWorkouts } from '../../api/fetchWorkoutData';
 
 function ProgramForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [workouts, setWorkouts] = useState([]);
+  const [selectedWorkouts, setSelectedWorkouts] = useState([]);
+
+  useEffect(()=>{
+    async function fetchPrograms() {
+      const [, data] = await getAllWorkouts();
+      setWorkouts(data);
+    }
+    fetchPrograms();
+
+  },[])
+
+  const handleProgramsChange = (e)=>{
+    const selectedworkoutIds = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
+    
+    setSelectedWorkouts(selectedworkoutIds);
+
+  }
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let program = {
-      name: title,
-      author: keycloak.tokenParsed.name,
-      description: description,
-    };
+
+
+      
+    
+    
     try {
-      const result = await addProgram(program);
+      const tempList = [];
+      selectedWorkouts.map((id)=>tempList.push(workouts[id-1]));
+      console.log(tempList)
+      const data = {
+        workouts: tempList,
+        name: title,
+        description: description,
+        category: "",
+        imageURL: ""
+      }
+      const result = await addProgram(data);
       console.log(result);
       setTitle('');
       setDescription('');
@@ -46,9 +80,21 @@ function ProgramForm() {
       </fieldset>
       <fieldset className='contribute-fieldset'>
         <legend>Workouts</legend>
-        <select>
-          <option>workout 1</option>
-          <option>workout 2</option>
+        <select
+          multiple={true}
+          id='exercises'
+          value={selectedWorkouts}
+          onChange={handleProgramsChange}
+        >
+          <option value=''>-- Select --</option>
+          {workouts.map((exercises) => (
+        <option className='program-item' key={exercises.id} value={exercises.id}>
+          {exercises.name}
+        </option>
+      ))}
+          
+          
+          
         </select>
       </fieldset>
       <button type='submit'>Add Program</button>

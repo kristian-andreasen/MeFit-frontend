@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAllExercises } from '../../api/fetchExercises';
+import {addWorkout} from '../../api/postWorkout'
 import './WorkoutForm.css';
 
 function WorkoutForm() {
@@ -27,8 +28,23 @@ function WorkoutForm() {
     
     setSelectedExercises(selectedExerciseIds);
   };
+  async function handleSubmit(e){
+    e.preventDefault();
+    const tempList = []
+    selectedExercises.map((id)=>tempList.push(exercises[id-1]))
+    const data = {
+      exercises: tempList,
+      name: name,
+      description: description
+    }
+    await addWorkout(data);
+    
+
+  }
+
+
   return (
-    <form className='workout-form'>
+    <form className='workout-form' onSubmit={handleSubmit}>
       <div>
         <label htmlFor='name'>Name:</label>
         <br></br>
