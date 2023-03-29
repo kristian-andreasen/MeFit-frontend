@@ -3,10 +3,11 @@ import Backdrop from '../Backdrop';
 
 import { postGoal } from '../../api/postGoal';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './GoalFormModal.css';
 import ModalButton from '../ModalButton';
 import SelectProgram from '../programs/SelectProgram';
+import { GoalsList } from '../../context/GoalsContext';
 
 function GoalFormModal({ handleClose }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,6 +15,7 @@ function GoalFormModal({ handleClose }) {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [selectedProgram, setSelectedProgram] = useState(null);
+  const [goalsList, setGoalsList] = useContext(GoalsList);
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -73,7 +75,8 @@ function GoalFormModal({ handleClose }) {
     };
 
     const newGoal = await postGoal(goalData);
-    console.log('New goal created:', newGoal);
+    setGoalsList([...goalsList,newGoal]);
+    
 
     // reset the form fields
     setGoalName('');

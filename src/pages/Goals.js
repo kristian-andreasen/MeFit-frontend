@@ -4,19 +4,22 @@ import ProfileHeader from '../components/profile/ProfileHeader';
 import ProfileTabs from '../components/profile/ProfileTabs';
 
 import './Goals.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { GoalsList } from '../context/GoalsContext';
 import GoalFormModal from '../components/goals/GoalFormModal';
 import ActiveGoalsList from '../components/goals/ActiveGoalsList';
 import { NavLink } from 'react-router-dom';
 import LogActivityModal from '../components/goals/LogActivityModal';
 import CompletedGoalsList from '../components/goals/CompletedGoalsList';
 import DeleteGoalsModal from '../components/goals/DeleteGoalsModal';
+import { fetchGoals } from '../api/fetchGoals';
 
 
 function Goals() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activityModalOpen, setActivityModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [goalsList, setGoalsList] = useState([]);
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -24,9 +27,22 @@ function Goals() {
   const openActivityModal = () => setActivityModalOpen(true);
   const closeDeleteModal = () => setDeleteModalOpen(false);
   const openDeleteModal = () => setDeleteModalOpen(true);
+  useEffect(() => {
+    async function getGoals() {
+      const [, data] = await fetchGoals();
+      console.log(data);
+      
+      setGoalsList(data);
+      console.log("xd")
+      console.log(goalsList._currentValue);
+    }
+    getGoals();
+  }, []);
+  
+
 
   return (
-    <>
+    <GoalsList.Provider value={[goalsList,setGoalsList]}>
       <ProfileHeader />
       <main className='main-content-area'>
         <ProfileTabs />
@@ -118,7 +134,7 @@ function Goals() {
           <p>workout recommendations tailored just for you!</p>
         </section>
       </main>
-    </>
+    </GoalsList.Provider>
   );
 }
 
