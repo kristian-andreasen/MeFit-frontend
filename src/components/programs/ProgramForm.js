@@ -10,92 +10,94 @@ function ProgramForm() {
   const [workouts, setWorkouts] = useState([]);
   const [selectedWorkouts, setSelectedWorkouts] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     async function fetchPrograms() {
       const [, data] = await getAllWorkouts();
       data.programs = [];
       setWorkouts(data);
     }
     fetchPrograms();
+  }, []);
 
-  },[])
-
-  const handleProgramsChange = (e)=>{
+  const handleProgramsChange = (e) => {
     const selectedworkoutIds = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     );
-    
+
     setSelectedWorkouts(selectedworkoutIds);
-
-  }
-
-
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();    
+    event.preventDefault();
     try {
       const tempList = [];
-      selectedWorkouts.map((id)=>tempList.push(workouts[id-1]));
+      selectedWorkouts.map((id) => tempList.push(workouts[id - 1]));
       const data = {
         workouts: tempList,
         name: title,
-        author: "",
+        author: '',
         description: description,
-        category: "",
-        imageURL: "",
-        type: ""
-      }
-      console.log(data)
+        category: '',
+        imageURL: '',
+        type: '',
+      };
+      console.log(data);
       await addProgram(data);
       //console.log(result);
       setTitle('');
       setDescription('');
-
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className='contribute-form'>
-      <fieldset className='contribute-fieldset'>
-        <label htmlFor='title'>Title</label>
+    <form onSubmit={handleSubmit} className='program-form'>
+      <ul className='program-form-list'>
+        <h3>Title:</h3>
+
         <input
           type='text'
+          placeholder='Eg Running Foundations'
           id='title'
           value={title}
           onChange={(event) => setTitle(event.target.value)}
+          className="program-form-input"
         />
-      </fieldset>
-      <fieldset className='contribute-fieldset'>
-        <label htmlFor='description'>Description</label>
+
+        <h3>Description</h3>
+
         <textarea
           id='description'
+          placeholder='Eg Your legs are your foundation. They power nearly everything you do...'
           value={description}
           onChange={(event) => setDescription(event.target.value)}
+          className="program-form-text"
         />
-      </fieldset>
-      <fieldset className='contribute-fieldset'>
-        <legend>Workouts</legend>
+
+        <h3>Workouts</h3>
+        <p>Select multiple workouts to be part of a program</p>
         <select
           multiple={true}
           id='exercises'
           value={selectedWorkouts}
           onChange={handleProgramsChange}
+          className="program-form-select-input"
         >
-          <option value=''>-- Select --</option>
           {workouts.map((exercises) => (
-        <option className='program-item' key={exercises.id} value={exercises.id}>
-          {exercises.name}
-        </option>
-      ))}
-          
-          
-          
+            <option
+              className='program-item'
+              key={exercises.id}
+              value={exercises.id}
+            >
+              {exercises.name}
+            </option>
+          ))}
         </select>
-      </fieldset>
-      <button type='submit'>Add Program</button>
+      </ul>
+
+      <button type='submit' className='submit-program-btn'>Add Program</button>
     </form>
   );
 }
