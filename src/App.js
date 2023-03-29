@@ -42,6 +42,8 @@ function App() {
           <Route exact path='/program/:id' element={<KeycloakRoute role={ROLES.User}><Program /></KeycloakRoute>} />
           <Route path='/workouts' element={<KeycloakRoute role={ROLES.User}><Workouts /></KeycloakRoute>} />
           <Route path='/workout' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
+          <Route exact path='/workout/:id' element={<KeycloakRoute role={ROLES.User}><Workout /></KeycloakRoute>} />
+
 
           <Route path='/contribute-program' element={<KeycloakRoute role={ROLES.Contributor}><ContributeProgram /></KeycloakRoute>} />
           <Route path='/contribute-workout' element={<KeycloakRoute role={ROLES.Contributor}><ContributeWorkOut /></KeycloakRoute>} />
