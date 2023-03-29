@@ -108,7 +108,7 @@ function LogActivityModal({ handleClose }) {
         animate='visible'
         exit='exit'
       >
-        <h2>Select a goal to delete</h2>
+        <h2>Log a workout you completed!</h2>
         <form onSubmit={handleSubmit} className='create-goal-form'>
           <GoalSelect onSelect={handleSelectChange} />
           {selectedGoal && selectedGoal.program && (
