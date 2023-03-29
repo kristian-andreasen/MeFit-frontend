@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import keycloak, {
   loginWithRedirect,
@@ -31,27 +30,15 @@ function AuthMenu() {
             
           {keycloak.hasRealmRole(ROLES.Contributor) && (
               <li>
-                <NavLink to='/contribute-program' className='menu-link button-animation'>
+                <NavLink to='/contribute-exercise' className='menu-link button-animation'>
                   Contribute
                 </NavLink>
               </li>
             )           
             }
             
-
-
-
-          
-
-
-
             <li>
-              <NavLink to='/dashboard' className='menu-link button-animation'>
-                Dashboard
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/profile' className='menu-link button-animation'>
+              <NavLink to='/goals' className='menu-link button-animation'>
                 Profile
               </NavLink>
             </li>

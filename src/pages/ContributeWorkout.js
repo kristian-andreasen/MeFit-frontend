@@ -12,6 +12,7 @@ function ContributeWorkOut() {
       <main className='main-content-area'>
         <section className='contribute-workout-section'>
           <h2 className='contribute-workout-title'>Create Workout</h2>
+          <p>Add a new workout here, or go to "Program" to create a new program from existing workouts.</p>
           <WorkoutForm />
         </section>
       </main>

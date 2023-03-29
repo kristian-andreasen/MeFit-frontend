@@ -9,6 +9,8 @@ function WorkoutForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedExercises, setSelectedExercises] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchExercises() {
@@ -37,7 +39,19 @@ function WorkoutForm() {
       type: '',
       author: keycloak.tokenParsed.name,
     };
-    await addWorkout(data);
+    try {
+      await addWorkout(data);
+      setSuccessMessage('Workout added successfully!');
+      setErrorMessage('');
+      // Reset the input fields
+      setName('');
+      setDescription('');
+      setSelectedExercises([]);
+    } catch (error) {
+      console.error('Failed to add workout:', error.message);
+      setErrorMessage('Failed to add workout: ' + error.message);
+      setSuccessMessage('');
+    }
   }
 
   return (
@@ -51,7 +65,7 @@ function WorkoutForm() {
             id='name'
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="workout-form-input"
+            className='workout-form-input'
           />
         </div>
         <div>
@@ -62,7 +76,7 @@ function WorkoutForm() {
             placeholder='Eg Make sure to warm up before you start this workout...'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="workout-form-text-input"
+            className='workout-form-text-input'
           />
         </div>
         <div>
@@ -71,7 +85,7 @@ function WorkoutForm() {
 
           <select
             multiple={true}
-            className="workout-form-select-input"
+            className='workout-form-select-input'
             value={selectedExercises}
             onChange={handleExerciseChange}
           >
@@ -91,6 +105,8 @@ function WorkoutForm() {
       <button type='submit' className='workout-form-submit-btn'>
         Submit
       </button>
+      {successMessage && <p className='success-message'>{successMessage}</p>}
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
     </form>
   );
 }

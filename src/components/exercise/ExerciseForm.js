@@ -8,6 +8,8 @@ function ExerciseForm() {
   const [description, setDescription] = useState('');
   const [numSets, setNumSets] = useState(0);
   const [numReps, setNumReps] = useState(0);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,10 +25,21 @@ function ExerciseForm() {
     try {
       const response = await addExercise(exercise);
       console.log('Exercise added successfully:', response);
+      setSuccessMessage('Exercise added successfully!');
+      setErrorMessage('');
+
       // Do something with the response data, such as displaying a success message to the user
+      // Reset the input fields
+      setName('');
+      setMuscle('');
+      setDescription('');
+      setNumSets(0);
+      setNumReps(0);
     } catch (error) {
       console.error('Failed to add exercise:', error.message);
       // Do something with the error, such as displaying an error message to the user
+      setErrorMessage(error.message);
+      setSuccessMessage('');
     }
   };
 
@@ -75,7 +88,11 @@ function ExerciseForm() {
           className='exercise-form-input exercise-form-number-input'
         />
       </ul>
-      <button type='submit' className='exercise-form-submit'>Submit</button>
+      <button type='submit' className='exercise-form-submit'>
+        Submit
+      </button>
+      {successMessage && <p className='success-message'>{successMessage}</p>}
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
     </form>
   );
 }
