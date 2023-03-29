@@ -1,4 +1,5 @@
 import Navbar from '../components/navbar/Navbar';
+import VideoBackground from '../components/videoBackground/VideoBackground';
 import './StartPage.css';
 
 /**
@@ -7,6 +8,7 @@ import './StartPage.css';
 function StartPage() {
   return (
     <div className='homepage-container'>
+      <VideoBackground />
       <Navbar />
       <main className='home-main-content'>
         <section className='banner-container'>
