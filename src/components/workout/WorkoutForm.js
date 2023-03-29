@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAllExercises } from '../../api/fetchExercises';
 import {addWorkout} from '../../api/postWorkout'
+import keycloak from '../../keycloak';
 import './WorkoutForm.css';
 
 function WorkoutForm() {
@@ -8,7 +9,6 @@ function WorkoutForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedExercises, setSelectedExercises] = useState([]);
-
 
 
   useEffect(()=>{
@@ -37,7 +37,8 @@ function WorkoutForm() {
       exercises: tempList,
       name: name,
       description: description,
-      type: ""
+      type: "",
+      author: keycloak.tokenParsed.name
     }
     await addWorkout(data);
     

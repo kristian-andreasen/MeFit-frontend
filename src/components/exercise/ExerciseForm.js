@@ -4,6 +4,7 @@ import './ExerciseForm.css';
 
 function ExerciseForm() {
   const [name, setName] = useState('');
+  const [muscle, setMuscle] = useState('');
   const [description, setDescription] = useState('');
   const [numSets, setNumSets] = useState(0);
   const [numReps, setNumReps] = useState(0);
@@ -15,7 +16,8 @@ function ExerciseForm() {
       name: name,
       description: description,
       sets: numSets,
-      repetitions: numReps
+      repetitions: numReps,
+      muscle_group: muscle
     };
 
     try {
@@ -41,6 +43,16 @@ function ExerciseForm() {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
+        <label>
+          Muscle group:
+          <br></br>
+          <input
+            type='text'
+            value={muscle}
+            onChange={(e) => setMuscle(e.target.value)}
+          />
+        </label>
+        
 
         <label>
           Exercise Description:

@@ -13,10 +13,6 @@ function Profile() {
       <h2 className='progress'>Progress:</h2>
       <ProgressBar />
       <CalendarPlan />
-      <h3>lol</h3>
-      <h3>lol</h3>
-      <h3>lol</h3>
-
     </div>
   );    
 }
