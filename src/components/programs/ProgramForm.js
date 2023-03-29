@@ -7,6 +7,7 @@ import { getAllWorkouts } from '../../api/fetchWorkoutData';
 function ProgramForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [imageURL, setImageURL] = useState('');
   const [workouts, setWorkouts] = useState([]);
   const [selectedWorkouts, setSelectedWorkouts] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
@@ -41,7 +42,7 @@ function ProgramForm() {
         author: '',
         description: description,
         category: '',
-        imageURL: '',
+        imageURL: imageURL,
         type: '',
       };
       console.log(data);
@@ -49,6 +50,7 @@ function ProgramForm() {
       //console.log(result);
       setTitle('');
       setDescription('');
+      setImageURL('');
       setSelectedWorkouts([]);
       setSuccessMessage('Program added successfully!');
       setErrorMessage('');
@@ -70,6 +72,16 @@ function ProgramForm() {
           id='title'
           value={title}
           onChange={(event) => setTitle(event.target.value)}
+          className='program-form-input'
+        />
+
+        <h3>Image:</h3>
+        <input
+          type='text'
+          placeholder='upload image'
+          id='image'
+          value={imageURL}
+          onChange={(event) => setImageURL(event.target.value)}
           className='program-form-input'
         />
 
