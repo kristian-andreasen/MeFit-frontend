@@ -6,10 +6,10 @@ function ProgressBar() {
   return (
     <>
       <div style={{ width: 200, height: 200 }}>
-        <CircularProgressbar value={percentage} text={`${percentage}%`} />;
+        <CircularProgressbar value={percentage} text={`${percentage}%`} />
       </div>
     </>
-  );
+  )
 }
 
 export default ProgressBar;

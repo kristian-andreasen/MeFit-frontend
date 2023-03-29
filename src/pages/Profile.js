@@ -11,10 +11,12 @@ function Profile() {
       <ProfileHeader />
       <ProfileTabs />
       <h2 className='progress'>Progress:</h2>
-      <ProgressBar />
       <CalendarPlan />
+      <div className='progress-bar'>
+        <ProgressBar />
+      </div>
     </div>
-  );    
+  );
 }
 
 export default Profile;
