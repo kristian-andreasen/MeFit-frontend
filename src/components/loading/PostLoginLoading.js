@@ -28,14 +28,14 @@ function PostLoginLoading() {
                   sessionStorage.setItem("userData",JSON.stringify(currentUserData));
                   let tempData = JSON.parse(sessionStorage.userData);
                   if(tempData.age===0 || tempData.weight===0 || tempData.height===0){
-                    navigate("/signup")
+                    navigate("/goals")
                   } else {navigate("/")}
                   
                 } else {
                   sessionStorage.setItem("userData",JSON.stringify(response[1]));
                   let tempData = JSON.parse(sessionStorage.userData);
                   if(tempData.age===0 || tempData.weight===0 || tempData.height===0){
-                    navigate("/signup")
+                    navigate("/goals")
                   } else {navigate("/")}
                   
                 }
