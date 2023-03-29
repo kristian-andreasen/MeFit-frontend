@@ -8,10 +8,10 @@ function Navbar() {
     <header className='header-container'>
       <nav className='main-navigation'>
         <MenuItems />
-        <NavLink to="/">
+
           <h1 id='logo' className='header-heading'>
           MeFit
-        </h1></NavLink>
+        </h1>
 
         <AuthMenu />
       </nav>

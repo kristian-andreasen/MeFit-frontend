@@ -9,6 +9,8 @@ function ProgramForm() {
   const [description, setDescription] = useState('');
   const [workouts, setWorkouts] = useState([]);
   const [selectedWorkouts, setSelectedWorkouts] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchPrograms() {
@@ -47,8 +49,13 @@ function ProgramForm() {
       //console.log(result);
       setTitle('');
       setDescription('');
+      setSelectedWorkouts([]);
+      setSuccessMessage('Program added successfully!');
+      setErrorMessage('');
     } catch (error) {
       console.error(error);
+      setSuccessMessage('');
+      setErrorMessage('Failed to add program: ' + error.message);
     }
   };
 
@@ -63,7 +70,7 @@ function ProgramForm() {
           id='title'
           value={title}
           onChange={(event) => setTitle(event.target.value)}
-          className="program-form-input"
+          className='program-form-input'
         />
 
         <h3>Description</h3>
@@ -73,7 +80,7 @@ function ProgramForm() {
           placeholder='Eg Your legs are your foundation. They power nearly everything you do...'
           value={description}
           onChange={(event) => setDescription(event.target.value)}
-          className="program-form-text"
+          className='program-form-text'
         />
 
         <h3>Workouts</h3>
@@ -83,7 +90,7 @@ function ProgramForm() {
           id='exercises'
           value={selectedWorkouts}
           onChange={handleProgramsChange}
-          className="program-form-select-input"
+          className='program-form-select-input'
         >
           {workouts.map((exercises) => (
             <option
@@ -97,7 +104,11 @@ function ProgramForm() {
         </select>
       </ul>
 
-      <button type='submit' className='submit-program-btn'>Add Program</button>
+      <button type='submit' className='submit-program-btn'>
+        Add Program
+      </button>
+      {successMessage && <p className='success-message'>{successMessage}</p>}
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
     </form>
   );
 }
