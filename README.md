@@ -5,11 +5,31 @@
 
 ---
 
-# Getting Started with Create React App
+# Metfit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mefit is a simple and easy-to-use app that allows you to create weekly fitness goals and offers you the ability to track your progress. The goal is to give you the freedom of choosing fitness program that specifically tailored for you.
 
-## Available Scripts
+Create goals and keep track of your progress of finishing them, get program suggestions, become a contributor yourself and more. Then, visualize your progress in bar charts and graphs.
+
+The project is still in development so there are a lot of features left to be added.
+
+## Technologies used
+
+This project uses React for the front-end in order to give the user experience a smooth app-like experience on the website.
+
+## Current Features
+- create multiple goals by 
+- track your goals, and move them to the completed list
+- users with "contributor" role can submit new programs and share them with others.
+
+## Future features
+Analytics
+- Charts for progress
+
+Contributor requests
+- Regular user can submit request gaining the contributor role
+
+## Contributing
 
 In the project directory, you can run:
 
