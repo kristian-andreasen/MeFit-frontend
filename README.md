@@ -29,6 +29,12 @@ Analytics
 Contributor requests
 - Regular user can submit request gaining the contributor role
 
+## Test the app
+
+Sign in with the following credentials:
+username: testcontribute@gmail.com
+password: test
+
 ## Contributing
 
 In the project directory, you can run:
